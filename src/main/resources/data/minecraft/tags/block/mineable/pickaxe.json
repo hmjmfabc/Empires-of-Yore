@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "swordsman:aluminum_ore",
+    "swordsman:deepslate_quartz_ore",
+    "swordsman:overworld_quartz_ore",
+    "swordsman:power_stone_ore",
+    "swordsman:titanium_ore"
+  ]
+}

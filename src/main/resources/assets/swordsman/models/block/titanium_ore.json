@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "swordsman:block/titanium_ore",
+    "up": "swordsman:block/titanium_ore",
+    "north": "swordsman:block/titanium_ore",
+    "east": "swordsman:block/titanium_ore",
+    "south": "swordsman:block/titanium_ore",
+    "west": "swordsman:block/titanium_ore",
+    "particle": "swordsman:block/titanium_ore"
+  },
+  "render_type": "solid"
+}

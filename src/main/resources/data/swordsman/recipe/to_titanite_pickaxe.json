@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    " b ",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "item": "swordsman:titanite_ingot"
+    },
+    "b": {
+      "item": "swordsman:titanite_stick"
+    }
+  },
+  "result": {
+    "id": "swordsman:titanite_pickaxe",
+    "count": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "swordsman:aluminum_ingot"
+    },
+    {
+      "item": "minecraft:charcoal"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "swordsman:titanite_scrap"
+    },
+    {
+      "item": "swordsman:titanite_scrap"
+    },
+    {
+      "item": "swordsman:titanite_scrap"
+    }
+  ],
+  "result": {
+    "id": "swordsman:titanite_ingot",
+    "count": 1
+  }
+}

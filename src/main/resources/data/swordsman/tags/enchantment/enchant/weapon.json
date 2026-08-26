@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:sharpness",
+    "minecraft:smite",
+    "minecraft:bane_of_arthropods",
+    "minecraft:knockback",
+    "minecraft:looting",
+    "minecraft:sweeping_edge",
+    "minecraft:fire_aspect",
+    "minecraft:fortune",
+    "minecraft:silk_touch",
+    "minecraft:efficiency",
+    "minecraft:unbreaking",
+    "minecraft:mending",
+    "minecraft:vanishing_curse"
+  ]
+}

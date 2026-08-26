@@ -1,0 +1,30 @@
+{
+  "parent": "swordsman:get_treasure/lv8",
+  "display": {
+    "icon": {
+      "id": "minecraft:black_shulker_box",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.swordsman.get_treasure.lv9"
+    },
+    "description": {
+      "translate": "advancement.swordsman.get_treasure.lv9.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "chest_opened": {
+      "trigger": "minecraft:player_generates_container_loot",
+      "conditions": {
+        "loot_table": "swordsman:chests/lv9"
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

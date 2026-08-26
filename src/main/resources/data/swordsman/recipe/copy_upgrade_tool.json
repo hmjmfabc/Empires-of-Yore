@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aca",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:copper_ingot"
+    },
+    "b": {
+      "item": "swordsman:upgrade_tool"
+    },
+    "c": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "id": "swordsman:upgrade_tool",
+    "count": 2
+  }
+}

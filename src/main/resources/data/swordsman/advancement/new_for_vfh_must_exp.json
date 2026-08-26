@@ -1,0 +1,31 @@
+{
+  "parent": "swordsman:root",
+  "display": {
+    "icon": {
+      "id": "minecraft:zombie_head",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.swordsman.new_for_vfh_must_exp"
+    },
+    "description": {
+      "translate": "advancement.swordsman.new_for_vfh_must_exp.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "killed_by_jiangshi": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "#swordsman:jiangshi"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 390
+  }
+}

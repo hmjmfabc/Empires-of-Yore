@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        // 国内镜像优先(规避无 VPN 时直连缓慢), 官方源兜底
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+        maven { url = 'https://maven.neoforged.net/releases' }
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}

@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "swordsman:quartz_overworld",
+    "swordsman:quartz_deep_overworld"
+  ],
+  "step": "underground_ores"
+}

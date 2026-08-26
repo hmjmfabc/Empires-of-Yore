@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "swordsman:big_crystal_planet",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 72,
+    "separation": 56,
+    "salt": 588261781
+  }
+}

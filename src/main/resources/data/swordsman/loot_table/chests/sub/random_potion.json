@@ -1,0 +1,183 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:healing"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:regeneration"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:strength"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:swiftness"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:leaping"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:night_vision"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:fire_resistance"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:water_breathing"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:slow_falling"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:turtle_master"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:poison"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [
+                {
+                  "components": {
+                    "minecraft:potion_contents": {
+                      "potion": "minecraft:luck"
+                    }
+                  },
+                  "function": "minecraft:set_components"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

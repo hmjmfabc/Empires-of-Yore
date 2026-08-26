@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "swordsman:mining_caves",
+    "swordsman:mining_lush",
+    "swordsman:mining_quartz",
+    "swordsman:mining_deep_dark"
+  ]
+}

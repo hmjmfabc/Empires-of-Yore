@@ -1,0 +1,27 @@
+{
+  "feature": "swordsman:ore_quartz",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 4
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 384
+        },
+        "max_inclusive": {
+          "absolute": 800
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
