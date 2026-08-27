@@ -44,3 +44,7 @@ mods/
 build*.log
 .ref*/
 src-hctech/
+
+### 游戏运行日志 ###
+latest.log
+crash-*.txt
