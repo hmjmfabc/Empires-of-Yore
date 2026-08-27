@@ -8,8 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.minecraft.world.item.ItemStack;
 
 public class SwordsmanFuels {
-	@SubscribeEvent
-	public static void furnaceFuelBurnTimeEvent(FurnaceFuelBurnTimeEvent event) {
+ public static void furnaceFuelBurnTimeEvent(FurnaceFuelBurnTimeEvent event) {
 		ItemStack itemstack = event.getItemStack();
 		if (itemstack.getItem() == SwordsmanMod.POWER_STONE.get())
 			event.setBurnTime(1600);

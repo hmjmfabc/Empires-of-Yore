@@ -1,0 +1,94 @@
+---- Minecraft Crash Report ----
+// Oh - I know what I did wrong!
+
+Time: 2026-08-27 22:15:06
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:124) ~[bus-8.0.5.jar%2381!/:?] {}
+-- Mod loading issue for: swordsman --
+Details:
+	Mod file: /storage/emulated/0/FCL/.minecraft/versions/1.21.1-NeoForge/mods/swordsman-27.0.0.7.jar
+	Failure message: 剑客群组服 (swordsman) has failed to load correctly
+		java.lang.IllegalArgumentException: Expected @SubscribeEvent method public static void top.swordsman.SwordsmanMod.registerArmorMaterials(net.neoforged.neoforge.registries.RegisterEvent) to NOT be static
+		because register() was called with an instance type.
+		Either make the method non-static, or call register(SwordsmanMod.class).
+		
+	Mod version: 27.0.0.7
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.IllegalArgumentException: Expected @SubscribeEvent method public static void top.swordsman.SwordsmanMod.registerArmorMaterials(net.neoforged.neoforge.registries.RegisterEvent) to NOT be static
+because register() was called with an instance type.
+Either make the method non-static, or call register(SwordsmanMod.class).
+
+Stacktrace:
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:124) ~[bus-8.0.5.jar%2381!/:?] {}
+	at TRANSFORMER/swordsman@27.0.0.7/top.swordsman.SwordsmanMod.<init>(SwordsmanMod.java:334) ~[swordsman-27.0.0.7.jar%23147!/:?] {re:classloading}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(Unknown Source) ~[?:?] {}
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Unknown Source) ~[?:?] {}
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:122) ~[loader-4.0.43.jar%2378!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:153) ~[loader-4.0.43.jar%2378!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:231) ~[loader-4.0.43.jar%2378!/:4.0] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.1
+	Minecraft Version ID: 1.21.1
+	Operating System: Linux (aarch64) version Android-16
+	Java Version: 21.0.1-internal, N/A
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1197663584 bytes (1142 MiB) / 2147483648 bytes (2048 MiB) up to 3038773248 bytes (2898 MiB)
+	CPUs: 8
+	Graphics card #0 name: unknown
+	Graphics card #0 vendor: unknown
+	Graphics card #0 VRAM (MiB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MiB): 17846.95
+	Virtual memory used (MiB): 12602.99
+	Swap memory total (MiB): 12288.00
+	Swap memory used (MiB): 3846.00
+	Space in storage for jna.tmpdir (MiB): available: 115196.19, total: 226169.84
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): available: 115196.19, total: 226169.84
+	Space in storage for io.netty.native.workdir (MiB): available: 115196.19, total: 226169.84
+	Space in storage for java.io.tmpdir (MiB): available: 115196.19, total: 226169.84
+	Space in storage for workdir (MiB): available: 115196.19, total: 226169.84
+	JVM Flags: 4 total; -Xbootclasspath/a:/data/user/0/com.tungsten.fcl/app_runtime/caciocavallo17/cacio-agent.jar:/data/user/0/com.tungsten.fcl/app_runtime/caciocavallo17/cacio-shared-1.19.1-SNAPSHOT.jar:/data/user/0/com.tungsten.fcl/app_runtime/caciocavallo17/cacio-tta-1.19.1-SNAPSHOT.jar -Xmx2897m -Xms2048m -XX:ActiveProcessorCount=8
+	ModLauncher: 11.0.5+main.901c6ea8
+	ModLauncher launch target: forgeclient
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-4.0.43.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.43.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.43.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.5.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.5.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		client-1.21.1-20240808.144430-srg.jar             |Minecraft                     |minecraft                     |1.21.1              |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		neoforge-21.1.248-universal.jar                   |NeoForge                      |neoforge                      |21.1.248            |Manifest: NOSIGNATURE
+		swordsman-27.0.0.7.jar                            |剑客群组服                         |swordsman                     |27.0.0.7            |Manifest: NOSIGNATURE
+	Crash Report UUID: fb6a4619-d0c3-4a88-927e-feda61a970db
+	FML: 4.0.43
+	NeoForge: 21.1.248

@@ -248,7 +248,6 @@ public final class SwordsmanMod {
     public static Holder<ArmorMaterial> DURAALUMIN_MATERIAL;
     public static Holder<ArmorMaterial> ENDITE_MATERIAL;
 
-    @SubscribeEvent
     public static void registerArmorMaterials(RegisterEvent event) {
         event.register(Registries.ARMOR_MATERIAL, helper -> {
             DURAALUMIN_MATERIAL = holderOf(helper, Util.make(new EnumMap<>(ArmorItem.Type.class), m -> {
