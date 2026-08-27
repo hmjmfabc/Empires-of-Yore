@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_end",
+  "features": [
+    "swordsman:ore_end_advanced_energy"
+  ],
+  "step": "underground_ores"
+}

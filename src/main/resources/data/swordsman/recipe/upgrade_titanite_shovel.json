@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "category": "misc",
+  "template": {
+    "item": "swordsman:professional_upgrade_tools"
+  },
+  "base": {
+    "item": "swordsman:endite_shovel"
+  },
+  "addition": {
+    "item": "swordsman:titanite_ingot"
+  },
+  "result": {
+    "id": "swordsman:titanite_shovel"
+  }
+}

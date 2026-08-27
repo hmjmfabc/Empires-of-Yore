@@ -28,7 +28,7 @@ public class TitanitePickaxeItem extends PickaxeItem {
 
 		@Override
 		public TagKey<Block> getIncorrectBlocksForDrops() {
-			return BlockTags.INCORRECT_FOR_NETHERITE_TOOL;
+			return TagKey.create(net.minecraft.core.registries.Registries.BLOCK, net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("minecraft", "incorrect_for_titanite_tool"));
 		}
 
 		@Override

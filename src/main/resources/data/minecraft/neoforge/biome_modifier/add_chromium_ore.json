@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "swordsman:ore_chromium"
+  ],
+  "step": "underground_ores"
+}

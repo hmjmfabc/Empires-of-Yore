@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "swordsman:carbon_steel_hoe",
+    "swordsman:duraalumin_hoe",
+    "swordsman:endite_hoe",
     "swordsman:titanite_hoe"
   ]
 }

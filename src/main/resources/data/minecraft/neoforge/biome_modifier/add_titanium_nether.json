@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": [
+    "swordsman:ore_titanium_nether"
+  ],
+  "step": "underground_ores"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "swordsman:coke"
+    }
+  ],
+  "result": {
+    "id": "swordsman:carbon_steel_ingot",
+    "count": 1
+  }
+}

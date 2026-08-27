@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "fff",
+    "scs",
+    "lll"
+  ],
+  "key": {
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "s": {
+      "item": "swordsman:carbon_steel_block"
+    },
+    "c": {
+      "item": "swordsman:carbon_steel_block"
+    },
+    "l": {
+      "item": "minecraft:log",
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "id": "swordsman:industrial_oven",
+    "count": 1
+  }
+}

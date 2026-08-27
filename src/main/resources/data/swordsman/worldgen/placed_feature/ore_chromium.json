@@ -1,0 +1,32 @@
+{
+  "feature": "swordsman:ore_chromium",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "absolute": 64
+        },
+        "min_inclusive": {
+          "absolute": -64
+        },
+        "plateau": 100
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

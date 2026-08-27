@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": {
+    "item": "swordsman:dragon_remains"
+  },
+  "result": {
+    "id": "swordsman:endite_scrap"
+  },
+  "experience": 300.0,
+  "cookingtime": 6000
+}

@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "swordsman:item/titanite_loots"
+    "layer0": "swordsman:item/titanite_boots"
   }
 }

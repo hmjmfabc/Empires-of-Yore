@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "swordsman:carbon_steel_sword",
+    "swordsman:duraalumin_sword",
+    "swordsman:endite_sword",
     "swordsman:titanite_sword"
   ]
 }

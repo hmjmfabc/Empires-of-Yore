@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "result": {
+    "id": "swordsman:coke"
+  },
+  "experience": 10.0,
+  "cookingtime": 200
+}

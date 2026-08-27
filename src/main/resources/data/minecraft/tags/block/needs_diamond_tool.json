@@ -1,7 +1,13 @@
 {
   "replace": false,
   "values": [
-    "swordsman:aluminum_ore",
+    "swordsman:deepslate_magnesium_ore",
+    "swordsman:deepslate_titanium_ore",
+    "swordsman:end_advanced_energy_ore",
+    "swordsman:ender_titanium_ore",
+    "swordsman:magnesium_ore",
+    "swordsman:nether_advanced_energy_ore",
+    "swordsman:nether_titanium_ore",
     "swordsman:titanium_ore"
   ]
 }

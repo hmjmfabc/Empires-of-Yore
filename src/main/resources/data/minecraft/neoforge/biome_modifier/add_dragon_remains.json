@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:end_highlands",
+    "minecraft:end_barrens",
+    "minecraft:end_midlands",
+    "minecraft:small_end_islands"
+  ],
+  "features": [
+    "swordsman:ore_dragon_remains"
+  ],
+  "step": "underground_ores"
+}

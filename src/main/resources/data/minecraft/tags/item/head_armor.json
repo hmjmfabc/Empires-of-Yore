@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "swordsman:duraalumin_helmet",
+    "swordsman:endite_helmet",
     "swordsman:miku_helmet",
     "swordsman:titanite_helmet"
   ]

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "swordsman:duraalumin_boots",
+    "swordsman:endite_boots",
     "swordsman:miku_boots",
     "swordsman:titanite_boots"
   ]

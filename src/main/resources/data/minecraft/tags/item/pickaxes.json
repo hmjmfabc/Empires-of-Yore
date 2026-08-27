@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "swordsman:carbon_steel_pickaxe",
+    "swordsman:duraalumin_pickaxe",
+    "swordsman:endite_pickaxe",
     "swordsman:titanite_pickaxe"
   ]
 }

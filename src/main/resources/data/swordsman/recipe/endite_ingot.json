@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sds",
+    "ddd",
+    "sds"
+  ],
+  "key": {
+    "s": {
+      "item": "swordsman:endite_scrap"
+    },
+    "d": {
+      "item": "swordsman:duraalumin_ingot"
+    }
+  },
+  "result": {
+    "id": "swordsman:endite_ingot",
+    "count": 1
+  }
+}

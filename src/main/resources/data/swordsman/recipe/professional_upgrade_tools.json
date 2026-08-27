@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ddp",
+    "dud",
+    "ddd"
+  ],
+  "key": {
+    "d": {
+      "item": "swordsman:duraalumin_ingot"
+    },
+    "u": {
+      "item": "swordsman:upgrade_tool"
+    },
+    "p": {
+      "item": "swordsman:cryolite_powder"
+    }
+  },
+  "result": {
+    "id": "swordsman:professional_upgrade_tools",
+    "count": 2
+  }
+}

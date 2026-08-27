@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "iii",
+    "sos",
+    "ccc"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "swordsman:industrial_oven"
+    },
+    "o": {
+      "item": "swordsman:industrial_oven"
+    },
+    "c": {
+      "item": "swordsman:cryolite"
+    }
+  },
+  "result": {
+    "id": "swordsman:electrolytic_cell",
+    "count": 1
+  }
+}

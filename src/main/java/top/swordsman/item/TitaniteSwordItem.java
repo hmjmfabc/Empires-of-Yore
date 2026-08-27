@@ -30,7 +30,7 @@ public class TitaniteSwordItem extends SwordItem {
 
 		@Override
 		public TagKey<Block> getIncorrectBlocksForDrops() {
-			return BlockTags.INCORRECT_FOR_WOODEN_TOOL;
+			return TagKey.create(net.minecraft.core.registries.Registries.BLOCK, net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("minecraft", "incorrect_for_titanite_tool"));
 		}
 
 		@Override

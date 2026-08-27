@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "swordsman:duraalumin_chestplate",
+    "swordsman:endite_chestplate",
     "swordsman:miku_chestplate",
     "swordsman:titanite_chestplate"
   ]

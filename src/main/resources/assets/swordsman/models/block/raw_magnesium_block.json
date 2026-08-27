@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "swordsman:block/raw_magnesium_block"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "swordsman:block/advanced_industrial_oven_top",
+    "front": "swordsman:block/advanced_industrial_oven_front",
+    "side": "swordsman:block/advanced_industrial_oven_side"
+  }
+}
