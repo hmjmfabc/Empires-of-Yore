@@ -9,7 +9,7 @@
           "Name": "swordsman:dragon_remains"
         },
         "target": {
-          "predicate_type": "minecraft:block",
+          "predicate_type": "minecraft:block_match",
           "block": "minecraft:end_stone"
         }
       }

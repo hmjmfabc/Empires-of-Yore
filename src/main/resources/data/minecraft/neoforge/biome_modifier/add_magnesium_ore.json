@@ -4,8 +4,7 @@
     "minecraft:desert",
     "minecraft:badlands",
     "minecraft:eroded_badlands",
-    "minecraft:wooded_badlands",
-    "minecraft:badlands_plateau"
+    "minecraft:wooded_badlands"
   ],
   "features": [
     "swordsman:ore_magnesium"

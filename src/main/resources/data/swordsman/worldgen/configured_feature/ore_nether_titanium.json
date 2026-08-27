@@ -9,7 +9,7 @@
           "Name": "swordsman:nether_titanium_ore"
         },
         "target": {
-          "predicate_type": "minecraft:block",
+          "predicate_type": "minecraft:block_match",
           "block": "minecraft:netherrack"
         }
       }
