@@ -5,7 +5,7 @@
     "item": "swordsman:upgrade_tool"
   },
   "base": {
-    "item": "minecraft:minecraft:iron_shovel"
+    "item": "minecraft:iron_shovel"
   },
   "addition": {
     "item": "swordsman:carbon_steel_ingot"

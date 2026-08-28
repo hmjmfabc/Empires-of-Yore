@@ -326,6 +326,12 @@ public final class SwordsmanMod {
     public static final DeferredItem<Item> TITANITE_AXE = ITEMS.register("titanite_axe", () -> new AxeItem(TITANITE_TIER, base().durability(3939).attributes(DiggerItem.createAttributes(TITANITE_TIER, 9f, -2.6f)).fireResistant()));
     public static final DeferredItem<Item> TITANITE_SHOVEL = ITEMS.register("titanite_shovel", () -> new ShovelItem(TITANITE_TIER, base().durability(3939).attributes(DiggerItem.createAttributes(TITANITE_TIER, 5f, -2.6f)).fireResistant()));
 
+    /* ====== 初音护甲(修复: 工业扩展重构时丢失注册) ====== */
+    public static final DeferredItem<MikuItem.Helmet> MIKU_HELMET = ITEMS.register("miku_helmet", MikuItem.Helmet::new);
+    public static final DeferredItem<MikuItem.Chestplate> MIKU_CHESTPLATE = ITEMS.register("miku_chestplate", MikuItem.Chestplate::new);
+    public static final DeferredItem<MikuItem.Leggings> MIKU_LEGGINGS = ITEMS.register("miku_leggings", MikuItem.Leggings::new);
+    public static final DeferredItem<MikuItem.Boots> MIKU_BOOTS = ITEMS.register("miku_boots", MikuItem.Boots::new);
+
     /* ====== 方块物品(矿石/金属块/机器) ====== */
     public static final DeferredBlock<Block> POWER_STONE_ORE = BLOCKS.register("power_stone_ore", top.swordsman.block.PowerStoneOreBlock::new);
     public static final DeferredItem<BlockItem> POWER_STONE_ORE_ITEM = ITEMS.registerSimpleBlockItem("power_stone_ore", POWER_STONE_ORE);
@@ -377,7 +383,8 @@ public final class SwordsmanMod {
             for (Item i : new Item[]{TITANITE_SWORD.get(), DURAALUMIN_SWORD.get(), ENDITE_SWORD.get(), CARBON_STEEL_SWORD.get(),
                     TITANITE_HELMET.get(), TITANITE_CHESTPLATE.get(), TITANITE_LEGGINGS.get(), TITANITE_BOOTS.get(),
                     DURAALUMIN_HELMET.get(), DURAALUMIN_CHESTPLATE.get(), DURAALUMIN_LEGGINGS.get(), DURAALUMIN_BOOTS.get(),
-                    ENDITE_HELMET.get(), ENDITE_CHESTPLATE.get(), ENDITE_LEGGINGS.get(), ENDITE_BOOTS.get()})
+                    ENDITE_HELMET.get(), ENDITE_CHESTPLATE.get(), ENDITE_LEGGINGS.get(), ENDITE_BOOTS.get(),
+                    MIKU_HELMET.get(), MIKU_CHESTPLATE.get(), MIKU_LEGGINGS.get(), MIKU_BOOTS.get()})
                 event.accept(i);
         } else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             for (Block b : new Block[]{ALUMINUM_BLOCK.get(), TITANIUM_BLOCK.get(), TITANITE_BLOCK.get(), CHROMIUM_BLOCK.get(),

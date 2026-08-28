@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:needs_netherite_tool",
+    "#minecraft:needs_duraalumin_tool"
+  ]
+}

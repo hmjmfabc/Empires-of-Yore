@@ -47,7 +47,8 @@ public class MachineBlock extends Block implements EntityBlock {
 
     @Override
     public net.minecraft.world.ItemInteractionResult useItemOn(net.minecraft.world.item.ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        return net.minecraft.world.ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        openMachine(level, pos, player);
+        return net.minecraft.world.ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
     private InteractionResult openMachine(Level level, BlockPos pos, Player player) {

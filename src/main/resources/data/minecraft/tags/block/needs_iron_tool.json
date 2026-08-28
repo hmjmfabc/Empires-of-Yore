@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "swordsman:bauxite_ore",
+    "swordsman:deepslate_bauxite_ore",
     "swordsman:power_stone_ore"
   ]
 }

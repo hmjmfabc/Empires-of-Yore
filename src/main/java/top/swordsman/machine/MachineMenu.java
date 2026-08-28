@@ -18,6 +18,7 @@ public class MachineMenu extends AbstractContainerMenu {
         super(SwordsmanMod.MACHINE_MENU, id);
         this.be = be;
         this.machineType = be.getMachineType();
+        addDataSlots(be);
         int idx = 0;
         addSlot(new Slot(be, be.getFuelSlot(), 62, 53)); idx++;
         if (be.getReagentSlot() >= 0) addSlot(new Slot(be, be.getReagentSlot(), 40, 36)); idx++;

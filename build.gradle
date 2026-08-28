@@ -182,10 +182,16 @@ idea {
 
 // 一键部署到本地 FCL 游戏目录 (Android)：
 // ./gradlew build copyJarToFcl
+tasks.register('cleanOldFclJars') {
+    def modsDir = file('/storage/emulated/0/FCL/.minecraft/versions/1.21.1-NeoForge/mods')
+    doLast {
+        if (modsDir.exists()) {
+            modsDir.eachFileMatch(~ /swordsman-\d+\.\d+\.\d+\.\d+\.jar/) { it.delete() }
+        }
+    }
+}
 tasks.register('copyJarToFcl', Copy) {
-    dependsOn 'jar'
-    from layout.buildDirectory.dir('libs')
-    include 'swordsman-*.jar'
-    exclude '*-sources.jar', '*-javadoc.jar', '*slim*'
+    dependsOn 'jar', 'cleanOldFclJars'
+    from tasks.jar.archiveFile
     into '/storage/emulated/0/FCL/.minecraft/versions/1.21.1-NeoForge/mods'
 }
