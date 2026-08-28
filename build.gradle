@@ -179,3 +179,13 @@ idea {
         downloadJavadoc = true
     }
 }
+
+// 一键部署到本地 FCL 游戏目录 (Android)：
+// ./gradlew build copyJarToFcl
+tasks.register('copyJarToFcl', Copy) {
+    dependsOn 'jar'
+    from layout.buildDirectory.dir('libs')
+    include 'swordsman-*.jar'
+    exclude '*-sources.jar', '*-javadoc.jar', '*slim*'
+    into '/storage/emulated/0/FCL/.minecraft/versions/1.21.1-NeoForge/mods'
+}
