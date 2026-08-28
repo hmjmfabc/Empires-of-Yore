@@ -42,7 +42,7 @@ public class ElectrolyticCellBlockEntity extends AbstractMachineBlockEntity {
     }
 
     @Override
-    public float progressPerBurnTick(int inputIndex, ItemStack input) {
+    public float fuelCostPerTick(int inputIndex, ItemStack input) {
         if (input.is(SwordsmanMod.BAUXITE_POWDER.get())) {
             return hasCryolite() ? 1.0f : 4.0f;      // 无冰晶粉 → 能量4倍消耗
         }

@@ -43,8 +43,8 @@ public abstract class AbstractMachineBlockEntity extends BlockEntity implements 
     public abstract boolean isValidFuel(ItemStack stack);
     public abstract int getFuelTime(ItemStack stack);
     public abstract SmeltResult findRecipe(int inputIndex, ItemStack stack);
-    /** 每燃烧 tick 的进度倍率 (电解镁=2, 缺冰晶粉铝=4) */
-    public float progressPerBurnTick(int inputIndex, ItemStack input) { return 1.0f; }
+    /** 每个燃烧 tick 消耗的燃料量(倍率): 电解镁=2, 无冰晶粉铝=4 */
+    public float fuelCostPerTick(int inputIndex, ItemStack input) { return 1.0f; }
 
     public record SmeltResult(ItemStack result, int ticks, float xp, int cryoliteCost, int inputCount) {}
 
@@ -64,9 +64,8 @@ public abstract class AbstractMachineBlockEntity extends BlockEntity implements 
                 craftProgress[i] = 1;
             }
             if (burnTime > 0 && hasRoom(i, r)) {
-                burnTime--;
-                float prog = progressPerBurnTick(i, items.get(inputStart + i));
-                craftProgress[i] += Math.max(1, Math.round(prog));
+                burnTime -= Math.max(1, Math.round(fuelCostPerTick(i, items.get(inputStart + i))));
+                craftProgress[i] += 1;
                 if (craftProgress[i] >= craftDuration[i]) {
                     finish(i, r);
                 }
