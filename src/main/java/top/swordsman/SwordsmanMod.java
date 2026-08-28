@@ -165,6 +165,24 @@ public final class SwordsmanMod {
     public static final DeferredItem<BlockItem> RAW_MAGNESIUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("raw_magnesium_block", RAW_MAGNESIUM_BLOCK);
     public static final DeferredItem<BlockItem> CARBON_STEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("carbon_steel_block", CARBON_STEEL_BLOCK);
 
+
+
+    static {
+        ITEMS.registerSimpleBlockItem("bauxite_ore", BAUXITE_ORE);
+        ITEMS.registerSimpleBlockItem("deepslate_bauxite_ore", DEEPSLATE_BAUXITE_ORE);
+        ITEMS.registerSimpleBlockItem("chromium_ore", CHROMIUM_ORE);
+        ITEMS.registerSimpleBlockItem("deepslate_chromium_ore", DEEPSLATE_CHROMIUM_ORE);
+        ITEMS.registerSimpleBlockItem("magnesium_ore", MAGNESIUM_ORE);
+        ITEMS.registerSimpleBlockItem("deepslate_magnesium_ore", DEEPSLATE_MAGNESIUM_ORE);
+        ITEMS.registerSimpleBlockItem("advanced_energy_ore", ADVANCED_ENERGY_ORE);
+        ITEMS.registerSimpleBlockItem("deepslate_advanced_energy_ore", DEEPSLATE_ADVANCED_ENERGY_ORE);
+        ITEMS.registerSimpleBlockItem("nether_advanced_energy_ore", NETHER_ADVANCED_ENERGY_ORE);
+        ITEMS.registerSimpleBlockItem("end_advanced_energy_ore", END_ADVANCED_ENERGY_ORE);
+        ITEMS.registerSimpleBlockItem("deepslate_titanium_ore", DEEPSLATE_TITANIUM_ORE);
+        ITEMS.registerSimpleBlockItem("nether_titanium_ore", NETHER_TITANIUM_ORE);
+        ITEMS.registerSimpleBlockItem("ender_titanium_ore", ENDER_TITANIUM_ORE);
+    }
+
     /* ====== 机器 ====== */
     public static final DeferredBlock<top.swordsman.machine.MachineBlock> INDUSTRIAL_OVEN_BLOCK = MachineBlocks.INDUSTRIAL_OVEN;
     public static final DeferredBlock<top.swordsman.machine.MachineBlock> ADVANCED_INDUSTRIAL_OVEN_BLOCK = MachineBlocks.ADVANCED_INDUSTRIAL_OVEN;
