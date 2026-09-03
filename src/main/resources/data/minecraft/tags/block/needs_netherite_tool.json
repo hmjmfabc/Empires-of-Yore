@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "swordsman:chromium_ore",
-    "swordsman:deepslate_chromium_ore"
+    "empire:chromium_ore",
+    "empire:deepslate_chromium_ore"
   ]
 }

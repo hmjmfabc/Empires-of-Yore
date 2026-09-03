@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:carbon_steel_hoe",
-    "swordsman:duraalumin_hoe",
-    "swordsman:endite_hoe",
-    "swordsman:titanite_hoe"
+    "empire:carbon_steel_hoe",
+    "empire:duraalumin_hoe",
+    "empire:endite_hoe",
+    "empire:titanite_hoe"
   ]
 }

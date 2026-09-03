@@ -7,7 +7,7 @@
     "minecraft:small_end_islands"
   ],
   "features": [
-    "swordsman:ore_dragon_remains"
+    "empire:ore_dragon_remains"
   ],
   "step": "underground_ores"
 }

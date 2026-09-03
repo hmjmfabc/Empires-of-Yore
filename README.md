@@ -1,14 +1,14 @@
-# 剑客群组服 (Swordsman)
+# Empires of Yore (帝国往事)
 
-**剑客群组服（Swordsman Group Uniform, SGU）定制 Minecraft 模组**，基于 **NeoForge 21.1.248 / Minecraft 1.21.1**（Java 21）构建。
+**「帝国往事」(Empires of Yore) — 剑客群组服（Swordsman Group Uniform, SGU）定制 Minecraft 模组**，基于 **NeoForge 21.1.248 / Minecraft 1.21.1**（Java 21）构建。
 
 ## 内容
 
 ### 玩法与进度
-- **宝箱战利品表**：`swordsman:chests/lv1` ~ `lv9`、`lv6_thunder`（红红火火 Lv.6⚡️）与 `cheating_lv1~3`（诈骗箱），共 13 张；前 10 张必定开出 4~6 个名为「剑客群组服」的烤马铃薯，宝箱物品按等级逐级升级（附魔、装备、稀有材料等）
+- **宝箱战利品表**：`empire:chests/lv1` ~ `lv9`、`lv6_thunder`（红红火火 Lv.6⚡️）与 `cheating_lv1~3`（诈骗箱），共 13 张；前 10 张必定开出 4~6 个名为「剑客群组服」的烤马铃薯，宝箱物品按等级逐级升级（附魔、装备、稀有材料等）
 - **进度**：「剑客荣光」标签页——10 个隐藏宝藏进度（对应开启各级宝箱，奖励 100 XP）、「术友汇玩家不得不品的一环」「新手期已过！」（与清朝僵尸 `iss_magicfromtheeast:jiangshi` 相关，奖励 390 XP），以及「奉献恒心」（**碳钢锄耐久耗尽时**触发，奖励 100 XP）
-- **自定义采矿维度 `swordsman:mining`**：无地表、全地底洞穴世界（0~1024 层，上下基岩封闭，出生点 512 层），256 层以下石头替换为深板岩，矿石更密集，64 层以下极低概率远古残骸，384~800 层石英矿、128~256 层深层石英矿；怪物生成率更高且全部获得加强（生命/攻击/移速/追踪加成）
-- **石英矿石**：`swordsman:overworld_quartz_ore`（主世界 0~63 层）、`swordsman:deepslate_quartz_ore`（主世界 -64~0 层），均与下界石英矿石行为一致（除贴图）
+- **自定义采矿维度 `empire:mining`**：无地表、全地底洞穴世界（0~1024 层，上下基岩封闭，出生点 512 层），256 层以下石头替换为深板岩，矿石更密集，64 层以下极低概率远古残骸，384~800 层石英矿、128~256 层深层石英矿；怪物生成率更高且全部获得加强（生命/攻击/移速/追踪加成）
+- **石英矿石**：`empire:overworld_quartz_ore`（主世界 0~63 层）、`empire:deepslate_quartz_ore`（主世界 -64~0 层），均与下界石英矿石行为一致（除贴图）
 
 ### 工业体系：能源与矿石
 - **能源石体系**：能源石矿石（铁镐可采，掉落能源石，可作熔炉/机器燃料）；高级能源石矿石（**主世界 / 采矿维度 / 下界 / 末地**四处生成，需**硬铝镐**才能开采，掉落高级能源石，燃料 3200 点、橙色稀有）
@@ -46,12 +46,12 @@
 
 ```bash
 ./gradlew build
-# 产物：build/libs/swordsman-<版本>.jar
+# 产物：build/libs/empire-<版本>.jar
 ```
 
 > 版本号规则：`27.<重要更新>.<次要更新>.<Build>`（第一位为年份，首次构建为 27.0.0.1）。
 
-> 国内网络下 Gradle 与依赖下载较慢，`settings.gradle` 与 `build.gradle` 已配置阿里云/腾讯云镜像（官方源兜底）。Android/FCL 用户可用 `./gradlew build copyJarToFcl` 一键部署（仅拷贝当前版本 jar 并清理旧版本）。
+> 国内网络下 Gradle 与依赖下载较慢，`settings.gradle` 与 `build.gradle` 已配置阿里云/腾讯云镜像（官方源兜底）。Android/FCL 用户可用 `./gradlew build copyJarToFcl` 一键部署（仅拷贝当前版本 jar 并清理旧版本 `swordsman-*`/`empire-*`）。
 
 ## 依赖
 

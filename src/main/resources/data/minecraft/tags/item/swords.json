@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:carbon_steel_sword",
-    "swordsman:duraalumin_sword",
-    "swordsman:endite_sword",
-    "swordsman:titanite_sword"
+    "empire:carbon_steel_sword",
+    "empire:duraalumin_sword",
+    "empire:endite_sword",
+    "empire:titanite_sword"
   ]
 }

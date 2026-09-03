@@ -2,7 +2,7 @@
   "type": "neoforge:add_features",
   "biomes": "#minecraft:is_overworld",
   "features": [
-    "swordsman:ore_titanium_overworld"
+    "empire:ore_titanium_overworld"
   ],
   "step": "underground_ores"
 }

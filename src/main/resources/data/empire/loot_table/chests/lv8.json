@@ -1,0 +1,544 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:baked_potato",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4.0,
+                "max": 6.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": "剑客群组服"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/infinity_or_mending"
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "minecraft:power",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.9
+                }
+              ]
+            },
+            {
+              "add": true,
+              "enchantments": {
+                "minecraft:power": {
+                  "type": "minecraft:uniform",
+                  "min": 6.0,
+                  "max": 7.0
+                }
+              },
+              "function": "minecraft:set_enchantments",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.08
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:trident",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/trident"
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/trident",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.5
+                }
+              ]
+            },
+            {
+              "add": true,
+              "enchantments": {
+                "minecraft:impaling": {
+                  "type": "minecraft:uniform",
+                  "min": 6.0,
+                  "max": 8.0
+                }
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_sword",
+          "weight": 10,
+          "functions": [
+            {
+              "add": true,
+              "enchantments": {
+                "minecraft:sharpness": {
+                  "type": "minecraft:uniform",
+                  "min": 2.0,
+                  "max": 9.0
+                }
+              },
+              "function": "minecraft:set_enchantments"
+            },
+            {
+              "add": true,
+              "enchantments": {
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 1.0,
+                  "max": 4.0
+                }
+              },
+              "function": "minecraft:set_enchantments",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.8
+                }
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/weapon"
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/weapon",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "add": false,
+              "damage": 406.0,
+              "function": "minecraft:set_damage"
+            },
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:protection": 10.0,
+                "minecraft:unbreaking": 6.0,
+                "minecraft:vanishing_curse": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_chestplate",
+          "weight": 10,
+          "functions": [
+            {
+              "add": false,
+              "damage": 591.0,
+              "function": "minecraft:set_damage"
+            },
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:protection": 10.0,
+                "minecraft:unbreaking": 6.0,
+                "minecraft:vanishing_curse": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_leggings",
+          "weight": 10,
+          "functions": [
+            {
+              "add": false,
+              "damage": 554.0,
+              "function": "minecraft:set_damage"
+            },
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:protection": 10.0,
+                "minecraft:unbreaking": 6.0,
+                "minecraft:vanishing_curse": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_boots",
+          "weight": 10,
+          "functions": [
+            {
+              "add": false,
+              "damage": 480.0,
+              "function": "minecraft:set_damage"
+            },
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:protection": 10.0,
+                "minecraft:unbreaking": 6.0,
+                "minecraft:vanishing_curse": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_apple",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 3.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_golden_apple",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.4
+        }
+      ]
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:firework_rocket",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 18.0,
+                "max": 26.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "components": {
+                "minecraft:fireworks": {
+                  "Flight": 1,
+                  "Explosions": []
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 10.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.6
+        }
+      ]
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spectral_arrow",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 12.0,
+                "max": 12.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_block",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 6.0,
+                "max": 70.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 28.0,
+                "max": 36.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 28.0,
+                "max": 42.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.6
+        }
+      ]
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/books_high"
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/books_high",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.6
+                }
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "options": "#empire:enchant/books_high",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      }
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_scrap",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2.0,
+                "max": 6.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_block",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4.0,
+                "max": 7.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.8
+        }
+      ]
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "empire:chests/sub/random_potion",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2.0,
+                "max": 3.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_upgrade_smithing_template"
+        }
+      ],
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.8
+        }
+      ]
+    }
+  ]
+}

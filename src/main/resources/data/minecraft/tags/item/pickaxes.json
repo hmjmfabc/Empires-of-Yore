@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:carbon_steel_pickaxe",
-    "swordsman:duraalumin_pickaxe",
-    "swordsman:endite_pickaxe",
-    "swordsman:titanite_pickaxe"
+    "empire:carbon_steel_pickaxe",
+    "empire:duraalumin_pickaxe",
+    "empire:endite_pickaxe",
+    "empire:titanite_pickaxe"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "empire:block/advanced_industrial_oven_top",
+    "front": "empire:block/advanced_industrial_oven_front",
+    "side": "empire:block/advanced_industrial_oven_side"
+  }
+}

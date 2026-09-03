@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:mining_caves",
-    "swordsman:mining_lush",
-    "swordsman:mining_quartz",
-    "swordsman:mining_deep_dark"
+    "empire:mining_caves",
+    "empire:mining_lush",
+    "empire:mining_quartz",
+    "empire:mining_deep_dark"
   ]
 }

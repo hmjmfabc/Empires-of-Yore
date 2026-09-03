@@ -1,6 +1,0 @@
-{
-  "type": "swordsman:deepslate_layer",
-  "config": {
-    "threshold_y": 256
-  }
-}

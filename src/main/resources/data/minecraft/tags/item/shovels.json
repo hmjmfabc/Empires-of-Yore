@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:carbon_steel_shovel",
-    "swordsman:duraalumin_shovel",
-    "swordsman:endite_shovel",
-    "swordsman:titanite_shovel"
+    "empire:carbon_steel_shovel",
+    "empire:duraalumin_shovel",
+    "empire:endite_shovel",
+    "empire:titanite_shovel"
   ]
 }

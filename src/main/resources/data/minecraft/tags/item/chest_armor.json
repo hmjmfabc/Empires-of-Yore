@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:duraalumin_chestplate",
-    "swordsman:endite_chestplate",
-    "swordsman:miku_chestplate",
-    "swordsman:titanite_chestplate"
+    "empire:duraalumin_chestplate",
+    "empire:endite_chestplate",
+    "empire:miku_chestplate",
+    "empire:titanite_chestplate"
   ]
 }

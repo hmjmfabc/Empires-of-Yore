@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "empire:raw_magnesium"
+    }
+  },
+  "result": {
+    "id": "empire:raw_magnesium_block",
+    "count": 1
+  }
+}

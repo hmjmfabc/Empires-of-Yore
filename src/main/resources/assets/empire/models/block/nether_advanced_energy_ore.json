@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "empire:block/nether_advanced_energy_ore"
+  }
+}

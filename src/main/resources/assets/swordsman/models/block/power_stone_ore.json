@@ -1,1 +1,0 @@
-{"parent": "block/cube", "textures": {"down": "swordsman:block/power_stone_ore", "up": "swordsman:block/power_stone_ore", "north": "swordsman:block/power_stone_ore", "east": "swordsman:block/power_stone_ore", "south": "swordsman:block/power_stone_ore", "west": "swordsman:block/power_stone_ore", "particle": "swordsman:block/power_stone_ore"}, "render_type": "solid"}

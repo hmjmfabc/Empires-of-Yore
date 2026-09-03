@@ -43,6 +43,7 @@ repo/
 mods/
 build*.log
 .ref*/
+refsrc/
 src-hctech/
 
 ### 游戏运行日志 ###

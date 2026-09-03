@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "empire:malikaidao_grave",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 225,
+    "separation": 168,
+    "salt": 668423089
+  }
+}

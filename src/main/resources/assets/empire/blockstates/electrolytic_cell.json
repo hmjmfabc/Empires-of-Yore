@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "empire:block/electrolytic_cell"
+    }
+  }
+}

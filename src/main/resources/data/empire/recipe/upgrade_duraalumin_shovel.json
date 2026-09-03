@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "category": "misc",
+  "template": {
+    "item": "empire:professional_upgrade_tools"
+  },
+  "base": {
+    "item": "minecraft:netherite_shovel"
+  },
+  "addition": {
+    "item": "empire:duraalumin_ingot"
+  },
+  "result": {
+    "id": "empire:duraalumin_shovel"
+  }
+}

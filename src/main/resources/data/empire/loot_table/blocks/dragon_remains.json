@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "empire:dragon_remains"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "empire:blocks/dragon_remains"
+}

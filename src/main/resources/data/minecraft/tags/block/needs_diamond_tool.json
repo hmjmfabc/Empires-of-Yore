@@ -1,13 +1,13 @@
 {
   "replace": false,
   "values": [
-    "swordsman:deepslate_magnesium_ore",
-    "swordsman:deepslate_titanium_ore",
-    "swordsman:end_advanced_energy_ore",
-    "swordsman:ender_titanium_ore",
-    "swordsman:magnesium_ore",
-    "swordsman:nether_advanced_energy_ore",
-    "swordsman:nether_titanium_ore",
-    "swordsman:titanium_ore"
+    "empire:deepslate_magnesium_ore",
+    "empire:deepslate_titanium_ore",
+    "empire:end_advanced_energy_ore",
+    "empire:ender_titanium_ore",
+    "empire:magnesium_ore",
+    "empire:nether_advanced_energy_ore",
+    "empire:nether_titanium_ore",
+    "empire:titanium_ore"
   ]
 }

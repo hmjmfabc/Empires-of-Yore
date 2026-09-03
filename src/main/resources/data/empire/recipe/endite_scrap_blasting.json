@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": {
+    "item": "empire:dragon_remains"
+  },
+  "result": {
+    "id": "empire:endite_scrap"
+  },
+  "experience": 300.0,
+  "cookingtime": 6000
+}

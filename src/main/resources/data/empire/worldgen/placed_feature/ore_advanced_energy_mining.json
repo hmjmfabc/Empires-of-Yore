@@ -1,0 +1,27 @@
+{
+  "feature": "empire:ore_advanced_energy",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 4
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 224
+        },
+        "max_inclusive": {
+          "absolute": 288
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

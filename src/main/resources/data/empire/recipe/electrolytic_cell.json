@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "iii",
+    "sos",
+    "ccc"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "empire:industrial_oven"
+    },
+    "o": {
+      "item": "empire:industrial_oven"
+    },
+    "c": {
+      "item": "empire:cryolite"
+    }
+  },
+  "result": {
+    "id": "empire:electrolytic_cell",
+    "count": 1
+  }
+}

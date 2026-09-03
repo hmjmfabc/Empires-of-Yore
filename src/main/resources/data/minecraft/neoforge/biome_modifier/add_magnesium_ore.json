@@ -7,7 +7,7 @@
     "minecraft:wooded_badlands"
   ],
   "features": [
-    "swordsman:ore_magnesium"
+    "empire:ore_magnesium"
   ],
   "step": "underground_ores"
 }

@@ -1,0 +1,48 @@
+package top.swordsman.empire.item;
+
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.tags.TagKey;
+import net.minecraft.tags.BlockTags;
+
+public class TitanitePickaxeItem extends PickaxeItem {
+	private static final Tier TOOL_TIER = new Tier() {
+		@Override
+		public int getUses() {
+			return 3999;
+		}
+
+		@Override
+		public float getSpeed() {
+			return 24f;
+		}
+
+		@Override
+		public float getAttackDamageBonus() {
+			return 0;
+		}
+
+		@Override
+		public TagKey<Block> getIncorrectBlocksForDrops() {
+			return TagKey.create(net.minecraft.core.registries.Registries.BLOCK, net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("minecraft", "incorrect_for_titanite_tool"));
+		}
+
+		@Override
+		public int getEnchantmentValue() {
+			return 28;
+		}
+
+		@Override
+		public Ingredient getRepairIngredient() {
+			return Ingredient.of();
+		}
+	};
+
+	public TitanitePickaxeItem() {
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 7f, -3f)).fireResistant());
+	}
+}

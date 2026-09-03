@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ddp",
+    "dud",
+    "ddd"
+  ],
+  "key": {
+    "d": {
+      "item": "empire:duraalumin_ingot"
+    },
+    "u": {
+      "item": "empire:upgrade_tool"
+    },
+    "p": {
+      "item": "empire:cryolite_powder"
+    }
+  },
+  "result": {
+    "id": "empire:professional_upgrade_tools",
+    "count": 2
+  }
+}

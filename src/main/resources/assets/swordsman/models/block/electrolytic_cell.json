@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "swordsman:block/electrolytic_cell_top",
-    "front": "swordsman:block/electrolytic_cell_front",
-    "side": "swordsman:block/electrolytic_cell_side"
-  }
-}

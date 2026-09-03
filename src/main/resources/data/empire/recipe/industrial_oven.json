@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "fff",
+    "scs",
+    "lll"
+  ],
+  "key": {
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "s": {
+      "item": "empire:carbon_steel_block"
+    },
+    "c": {
+      "item": "empire:carbon_steel_block"
+    },
+    "l": {
+      "item": "minecraft:log",
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "id": "empire:industrial_oven",
+    "count": 1
+  }
+}

@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "swordsman:duraalumin_boots",
-    "swordsman:endite_boots",
-    "swordsman:miku_boots",
-    "swordsman:titanite_boots"
+    "empire:duraalumin_boots",
+    "empire:endite_boots",
+    "empire:miku_boots",
+    "empire:titanite_boots"
   ]
 }

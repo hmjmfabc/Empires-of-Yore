@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "empire:item/titanite_ingot"
+  }
+}

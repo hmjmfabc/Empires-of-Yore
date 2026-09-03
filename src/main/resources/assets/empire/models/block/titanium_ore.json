@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "empire:block/titanium_ore",
+    "up": "empire:block/titanium_ore",
+    "north": "empire:block/titanium_ore",
+    "east": "empire:block/titanium_ore",
+    "south": "empire:block/titanium_ore",
+    "west": "empire:block/titanium_ore",
+    "particle": "empire:block/titanium_ore"
+  },
+  "render_type": "solid"
+}

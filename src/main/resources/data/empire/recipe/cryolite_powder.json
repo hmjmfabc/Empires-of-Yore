@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "empire:cryolite"
+    }
+  ],
+  "result": {
+    "id": "empire:cryolite_powder",
+    "count": 4
+  }
+}

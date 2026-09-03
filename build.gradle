@@ -186,7 +186,7 @@ tasks.register('cleanOldFclJars') {
     def modsDir = file('/storage/emulated/0/FCL/.minecraft/versions/1.21.1-NeoForge/mods')
     doLast {
         if (modsDir.exists()) {
-            modsDir.eachFileMatch(~ /swordsman-\d+\.\d+\.\d+\.\d+\.jar/) { it.delete() }
+            modsDir.eachFileMatch(~ /(swordsman|empire)-\d+\.\d+\.\d+\.\d+\.jar/) { it.delete() }
         }
     }
 }

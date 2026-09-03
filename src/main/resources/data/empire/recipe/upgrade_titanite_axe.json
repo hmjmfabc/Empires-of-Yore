@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "category": "misc",
+  "template": {
+    "item": "empire:professional_upgrade_tools"
+  },
+  "base": {
+    "item": "empire:endite_axe"
+  },
+  "addition": {
+    "item": "empire:titanite_ingot"
+  },
+  "result": {
+    "id": "empire:titanite_axe"
+  }
+}

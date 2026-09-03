@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "empire:raw_chromium"
+  },
+  "result": {
+    "id": "empire:chromium_ingot"
+  },
+  "experience": 18.0,
+  "cookingtime": 360
+}

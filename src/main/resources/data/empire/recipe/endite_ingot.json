@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sds",
+    "ddd",
+    "sds"
+  ],
+  "key": {
+    "s": {
+      "item": "empire:endite_scrap"
+    },
+    "d": {
+      "item": "empire:duraalumin_ingot"
+    }
+  },
+  "result": {
+    "id": "empire:endite_ingot",
+    "count": 1
+  }
+}

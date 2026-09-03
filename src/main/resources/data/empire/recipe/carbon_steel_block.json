@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "empire:carbon_steel_ingot"
+    }
+  },
+  "result": {
+    "id": "empire:carbon_steel_block",
+    "count": 1
+  }
+}

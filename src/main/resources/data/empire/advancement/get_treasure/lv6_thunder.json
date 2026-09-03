@@ -1,0 +1,30 @@
+{
+  "parent": "empire:get_treasure/lv5",
+  "display": {
+    "icon": {
+      "id": "minecraft:red_shulker_box",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.empire.get_treasure.lv6_thunder"
+    },
+    "description": {
+      "translate": "advancement.empire.get_treasure.lv6_thunder.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "chest_opened": {
+      "trigger": "minecraft:player_generates_container_loot",
+      "conditions": {
+        "loot_table": "empire:chests/lv6_thunder"
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

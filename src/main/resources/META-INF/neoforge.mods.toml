@@ -1,4 +1,4 @@
-# This is the neoforge.mods.toml file for the "剑客群组服" (Swordsman) mod.
+# This is the neoforge.mods.toml file for the "帝国往事" (Empires of Yore) mod.
 # The overall format is standard TOML format, v0.5.0.
 
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
@@ -27,11 +27,11 @@ displayName="${mod_name}" #mandatory
 authors="Hmjmfabc - The SGU"
 
 # The credits of the mod, displayed in the mod UI (optional)
-credits="使用 DeepSeek Harness & DeepSeek v4 Pro编写；包含 HCE 服务器科技模组内容，由 Hmjmfabc 制作，The SGU 全体成员协助与监制（MCreator 2025.3 构建）"
+credits="使用 DeepSeek Harness & DeepSeek v4 Pro 编写；包含 HCE 服务器科技模组内容，由 Hmjmfabc 制作，The SGU 全体成员协助与监制（MCreator 2025.3 构建）"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-剑客群组服(SGU)定制 mod
+帝国往事 (Empires of Yore) - SGU 定制 Minecraft 模组
 '''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.

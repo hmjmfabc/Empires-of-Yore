@@ -1,0 +1,1 @@
+{"parent": "block/cube", "textures": {"down": "empire:block/power_stone_ore", "up": "empire:block/power_stone_ore", "north": "empire:block/power_stone_ore", "east": "empire:block/power_stone_ore", "south": "empire:block/power_stone_ore", "west": "empire:block/power_stone_ore", "particle": "empire:block/power_stone_ore"}, "render_type": "solid"}

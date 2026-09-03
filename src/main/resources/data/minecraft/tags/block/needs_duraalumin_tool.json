@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "swordsman:advanced_energy_ore",
-    "swordsman:deepslate_advanced_energy_ore",
-    "swordsman:dragon_remains"
+    "empire:advanced_energy_ore",
+    "empire:deepslate_advanced_energy_ore",
+    "empire:dragon_remains"
   ]
 }

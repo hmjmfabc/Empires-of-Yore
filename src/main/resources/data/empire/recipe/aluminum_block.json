@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "empire:aluminum_ingot"
+    }
+  },
+  "result": {
+    "id": "empire:aluminum_block",
+    "count": 1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "id": "empire:titanite_hoe"
+    },
+    "title": {
+      "translate": "advancements.ultra_ultra_contribution.title"
+    },
+    "description": {
+      "translate": "advancements.ultra_ultra_contribution.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "ultra_ultra_contribution_0": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "item": {
+          "items": "empire:titanite_hoe",
+          "predicates": {
+            "minecraft:damage": {
+              "damage": {
+                "min": 23998,
+                "max": 24000
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 23999,
+    "loot": [
+      "empire:chests/big_crystal_planet_treasure"
+    ]
+  },
+  "parent": "empire:heart_of_titanite"
+}
