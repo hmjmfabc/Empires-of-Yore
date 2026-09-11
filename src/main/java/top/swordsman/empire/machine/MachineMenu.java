@@ -20,14 +20,23 @@ public class MachineMenu extends AbstractContainerMenu {
         this.machineType = be.getMachineType();
         addDataSlots(be);
         int idx = 0;
-        addSlot(new Slot(be, be.getFuelSlot(), 62, 53)); idx++;
-        if (be.getReagentSlot() >= 0) addSlot(new Slot(be, be.getReagentSlot(), 40, 36)); idx++;
+        // 燃料槽: 只接受有效燃料
+        addSlot(new Slot(be, be.getFuelSlot(), 62, 53) {
+            @Override public boolean mayPlace(ItemStack stack) { return be.isValidFuel(stack); }
+        }); idx++;
+        // 试剂槽(电解炉): 只接受冰晶石粉
+        if (be.getReagentSlot() >= 0) addSlot(new Slot(be, be.getReagentSlot(), 40, 36) {
+            @Override public boolean mayPlace(ItemStack stack) { return stack.is(top.swordsman.empire.EmpiresOfYoreMod.CRYOLITE_POWDER.get()); }
+        }); idx++;
         for (int i = 0; i < be.getInputCount(); i++) {
             int x = 71 + i * 22 - (be.getInputCount() > 1 ? (be.getInputCount() - 1) * 11 : 0);
             addSlot(new Slot(be, be.getInputStart() + i, x, 26));
         }
         for (int i = 0; i < be.getOutputCount(); i++) {
-            addSlot(new Slot(be, be.getOutputStart() + i, 116, 35));
+            // 输出槽: 玩家不可放入
+            addSlot(new Slot(be, be.getOutputStart() + i, 116, 35) {
+                @Override public boolean mayPlace(ItemStack stack) { return false; }
+            });
         }
         for (int r = 0; r < 3; r++)
             for (int c = 0; c < 9; c++)

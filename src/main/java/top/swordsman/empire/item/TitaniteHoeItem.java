@@ -22,7 +22,7 @@ public class TitaniteHoeItem extends HoeItem {
 
 		@Override
 		public float getAttackDamageBonus() {
-			return 0;
+			return 5f;
 		}
 
 		@Override

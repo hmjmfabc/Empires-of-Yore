@@ -80,11 +80,17 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
                 burnTime--;
                 batchProgress++;
                 if (batchProgress >= (Integer) batch[2]) {
+                    ItemStack result = byId((String) batch[1]);
+                    if (!fitsOutput(result)) {            // 修复: 输出槽类型/容量校验, 避免吞产物或错误堆叠
+                        batchProgress = (Integer) batch[2] - 1;
+                        syncData();
+                        return;
+                    }
                     for (Object[] spec : (Object[][]) batch[0]) {
                         getItem(inputStart + (Integer) spec[0]).shrink((Integer) spec[2]);
                     }
                     ItemStack out = getItem(outputStart);
-                    if (out.isEmpty()) setItem(outputStart, byId((String) batch[1]));
+                    if (out.isEmpty()) setItem(outputStart, result);
                     else out.grow(1);
                     if (level instanceof ServerLevel sl && (Float) batch[3] > 0) {
                         net.minecraft.world.entity.ExperienceOrb.award(sl, new net.minecraft.world.phys.Vec3(worldPosition.getX() + 0.5, worldPosition.getY() + 1.0, worldPosition.getZ() + 0.5), (int) (float) (Float) batch[3]);
@@ -103,6 +109,7 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
             if (r != null && !in.isEmpty()) {
                 any = true;
                 if (burnTime > 0 && hasRoomFor(r)) {
+                    if (craftProgress[0] <= 0) craftDuration[0] = r.ticks();   // 修复: 此前从未设置 -> 每tick瞬间产出
                     burnTime--;
                     craftProgress[0]++;
                     if (craftProgress[0] >= craftDuration[0]) {
@@ -123,6 +130,12 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
             if (!any && burnTime <= 0) { /* idle */ }
         }
         syncData();
+    }
+
+    /** 输出槽是否可以容纳该产物(空槽或同物品且不超堆叠上限) */
+    private boolean fitsOutput(ItemStack result) {
+        ItemStack out = getItem(outputStart);
+        return out.isEmpty() || (out.is(result.getItem()) && out.getCount() + 1 <= out.getMaxStackSize());
     }
 
     private boolean hasRoomFor(SmeltResult r) {

@@ -68,8 +68,8 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 
 import top.swordsman.empire.feature.DeepslateLayerFeature;
-import top.swordsman.empire.init.SwordsmanFuels;
-import top.swordsman.empire.init.SwordsmanTrades;
+import top.swordsman.empire.init.EmpireFuels;
+import top.swordsman.empire.init.EmpireTrades;
 import top.swordsman.empire.machine.AbstractMachineBlockEntity;
 import top.swordsman.empire.machine.ElectrolyticCellBlockEntity;
 import top.swordsman.empire.machine.IndustrialOvenBlockEntity;
@@ -233,7 +233,7 @@ public final class EmpiresOfYoreMod {
     public static final Tier CARBON_STEEL_TIER = new Tier() {
         public int getUses() { return 4200; }
         public float getSpeed() { return 6.5f; }
-        public float getAttackDamageBonus() { return 0; }
+        public float getAttackDamageBonus() { return 2f; }
         public TagKey<Block> getIncorrectBlocksForDrops() { return BlockTags.INCORRECT_FOR_IRON_TOOL; }
         public int getEnchantmentValue() { return 14; }
         public Ingredient getRepairIngredient() { return Ingredient.of(CARBON_STEEL_INGOT.get()); }
@@ -241,7 +241,7 @@ public final class EmpiresOfYoreMod {
     public static final Tier DURAALUMIN_TIER = new Tier() {
         public int getUses() { return 3000; }
         public float getSpeed() { return 10.5f; }
-        public float getAttackDamageBonus() { return 0; }
+        public float getAttackDamageBonus() { return 3f; }
         public TagKey<Block> getIncorrectBlocksForDrops() { return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", "incorrect_for_duraalumin_tool")); }
         public int getEnchantmentValue() { return 24; }
         public Ingredient getRepairIngredient() { return Ingredient.of(DURAALUMIN_INGOT.get()); }
@@ -249,7 +249,7 @@ public final class EmpiresOfYoreMod {
     public static final Tier ENDITE_TIER = new Tier() {
         public int getUses() { return 3500; }
         public float getSpeed() { return 17.0f; }
-        public float getAttackDamageBonus() { return 0; }
+        public float getAttackDamageBonus() { return 4f; }
         public TagKey<Block> getIncorrectBlocksForDrops() { return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", "incorrect_for_endite_tool")); }
         public int getEnchantmentValue() { return 26; }
         public Ingredient getRepairIngredient() { return Ingredient.of(ENDITE_INGOT.get()); }
@@ -257,7 +257,7 @@ public final class EmpiresOfYoreMod {
     public static final Tier TITANITE_TIER = new Tier() {
         public int getUses() { return 3939; }
         public float getSpeed() { return 24f; }
-        public float getAttackDamageBonus() { return 0; }
+        public float getAttackDamageBonus() { return 5f; }
         public TagKey<Block> getIncorrectBlocksForDrops() { return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", "incorrect_for_titanite_tool")); }
         public int getEnchantmentValue() { return 30; }
         public Ingredient getRepairIngredient() { return Ingredient.of(TITANITE_INGOT.get()); }
@@ -319,8 +319,8 @@ public final class EmpiresOfYoreMod {
     public static final DeferredItem<Item> ENDITE_LEGGINGS = ITEMS.register("endite_leggings", () -> new ArmorItem(ENDITE_MATERIAL, ArmorItem.Type.LEGGINGS, base().durability(ArmorItem.Type.LEGGINGS.getDurability(58)).fireResistant()));
     public static final DeferredItem<Item> ENDITE_BOOTS = ITEMS.register("endite_boots", () -> new ArmorItem(ENDITE_MATERIAL, ArmorItem.Type.BOOTS, base().durability(ArmorItem.Type.BOOTS.getDurability(58)).fireResistant()));
     public static final DeferredItem<Item> CARBON_STEEL_PICKAXE = ITEMS.register("carbon_steel_pickaxe", () -> new PickaxeItem(CARBON_STEEL_TIER, base().durability(4200).attributes(DiggerItem.createAttributes(CARBON_STEEL_TIER, 3.0f, -2.8f))));
-    public static final DeferredItem<Item> CARBON_STEEL_SWORD = ITEMS.register("carbon_steel_sword", () -> new SwordItem(CARBON_STEEL_TIER, base().durability(1499).attributes(SwordItem.createAttributes(CARBON_STEEL_TIER, 2f, -2.6f))));
-    public static final DeferredItem<Item> CARBON_STEEL_AXE = ITEMS.register("carbon_steel_axe", () -> new AxeItem(CARBON_STEEL_TIER, base().durability(1299).attributes(DiggerItem.createAttributes(CARBON_STEEL_TIER, 6f, -3.4f))));
+    public static final DeferredItem<Item> CARBON_STEEL_SWORD = ITEMS.register("carbon_steel_sword", () -> new SwordItem(CARBON_STEEL_TIER, base().durability(1499).attributes(SwordItem.createAttributes(CARBON_STEEL_TIER, 3f, -2.6f))));
+    public static final DeferredItem<Item> CARBON_STEEL_AXE = ITEMS.register("carbon_steel_axe", () -> new AxeItem(CARBON_STEEL_TIER, base().durability(1299).attributes(DiggerItem.createAttributes(CARBON_STEEL_TIER, 8f, -3.4f))));
     public static final DeferredItem<Item> CARBON_STEEL_SHOVEL = ITEMS.register("carbon_steel_shovel", () -> new ShovelItem(CARBON_STEEL_TIER, base().durability(1899).attributes(DiggerItem.createAttributes(CARBON_STEEL_TIER, 1f, -3.0f))));
     public static final DeferredItem<Item> CARBON_STEEL_HOE = ITEMS.register("carbon_steel_hoe", () -> new HoeItem(CARBON_STEEL_TIER, base().durability(2699).attributes(DiggerItem.createAttributes(CARBON_STEEL_TIER, 0f, -3.2f))));
     public static final DeferredItem<Item> TITANITE_AXE = ITEMS.register("titanite_axe", () -> new AxeItem(TITANITE_TIER, base().durability(3939).attributes(DiggerItem.createAttributes(TITANITE_TIER, 9f, -2.6f)).fireResistant()));
@@ -355,9 +355,9 @@ public final class EmpiresOfYoreMod {
         modEventBus.addListener(TitaniteItem::registerArmorMaterial);
         modEventBus.addListener(MikuItem::registerArmorMaterial);
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.addListener(SwordsmanFuels::furnaceFuelBurnTimeEvent);
-        NeoForge.EVENT_BUS.addListener(SwordsmanTrades::registerTrades);
-        LOGGER.info("[Swordsman] 剑客群组服(SGU) custom mod loaded.");
+        NeoForge.EVENT_BUS.addListener(EmpireFuels::furnaceFuelBurnTimeEvent);
+        NeoForge.EVENT_BUS.addListener(EmpireTrades::registerTrades);
+        LOGGER.info("[Empires of Yore] 帝国往事 loaded.");
     }
 
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {

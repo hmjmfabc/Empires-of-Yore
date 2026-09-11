@@ -22,13 +22,13 @@ public class MachineBlocks {
 
     public static final DeferredBlock<MachineBlock> INDUSTRIAL_OVEN = EmpiresOfYoreMod.BLOCKS.register("industrial_oven",
             () -> new MachineBlock(() -> MachineBlocks.INDUSTRIAL_OVEN_BE.get(),
-                    Component.translatable("block.swordsman.industrial_oven"), props(MapColor.TERRACOTTA_ORANGE)));
+                    Component.translatable("block.empire.industrial_oven"), props(MapColor.TERRACOTTA_ORANGE)));
     public static final DeferredBlock<MachineBlock> ADVANCED_INDUSTRIAL_OVEN = EmpiresOfYoreMod.BLOCKS.register("advanced_industrial_oven",
             () -> new MachineBlock(() -> MachineBlocks.ADVANCED_INDUSTRIAL_OVEN_BE.get(),
-                    Component.translatable("block.swordsman.advanced_industrial_oven"), props(MapColor.COLOR_PURPLE)));
+                    Component.translatable("block.empire.advanced_industrial_oven"), props(MapColor.COLOR_PURPLE)));
     public static final DeferredBlock<MachineBlock> ELECTROLYTIC_CELL = EmpiresOfYoreMod.BLOCKS.register("electrolytic_cell",
             () -> new MachineBlock(() -> MachineBlocks.ELECTROLYTIC_CELL_BE.get(),
-                    Component.translatable("block.swordsman.electrolytic_cell"), props(MapColor.COLOR_GRAY)));
+                    Component.translatable("block.empire.electrolytic_cell"), props(MapColor.COLOR_GRAY)));
 
     public static final net.neoforged.neoforge.registries.DeferredItem<BlockItem> INDUSTRIAL_OVEN_ITEM = EmpiresOfYoreMod.ITEMS.registerSimpleBlockItem("industrial_oven", INDUSTRIAL_OVEN);
     public static final net.neoforged.neoforge.registries.DeferredItem<BlockItem> ADVANCED_INDUSTRIAL_OVEN_ITEM = EmpiresOfYoreMod.ITEMS.registerSimpleBlockItem("advanced_industrial_oven", ADVANCED_INDUSTRIAL_OVEN);

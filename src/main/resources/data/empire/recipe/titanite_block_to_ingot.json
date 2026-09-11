@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "empire:titanite_block"
+    }
+  ],
+  "result": {
+    "id": "empire:titanite_ingot",
+    "count": 9
+  }
+}

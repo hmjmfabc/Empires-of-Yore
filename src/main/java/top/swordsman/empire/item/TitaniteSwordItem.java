@@ -25,7 +25,7 @@ public class TitaniteSwordItem extends SwordItem {
 
 		@Override
 		public float getAttackDamageBonus() {
-			return 0;
+			return 5f;
 		}
 
 		@Override

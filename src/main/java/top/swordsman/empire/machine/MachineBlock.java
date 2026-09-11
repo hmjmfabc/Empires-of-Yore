@@ -55,7 +55,8 @@ public class MachineBlock extends Block implements EntityBlock {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof AbstractMachineBlockEntity m) {
-                player.openMenu(new SimpleMenuProvider((id, inv, p) -> new MachineMenu(id, inv, m), title));
+                player.openMenu(new SimpleMenuProvider((id, inv, p) -> new MachineMenu(id, inv, m), title),
+                        buf -> buf.writeBlockPos(pos));
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
