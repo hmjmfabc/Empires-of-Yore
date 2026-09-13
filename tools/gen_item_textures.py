@@ -30,6 +30,10 @@ PALETTES = {
     'bronze':  dict(H=(0xf0,0xc9,0x8a), M=(0xc0,0x84,0x3c), L=(0x7d,0x4e,0x1f), O=(0x2a,0x18,0x08)),
     'trinity': dict(H=(0xf5,0xdf,0xa6), M=(0xa0,0x6f,0xd8), L=(0x4b,0x2c,0x7a), O=(0x14,0x0a,0x24)),
     'epic':    dict(H=(0xff,0xf2,0xc8), M=(0xe0,0xb6,0x4f), L=(0x8a,0x5f,0x1c), O=(0x2a,0x1a,0x05)),
+    'cryolite':dict(H=(0xff,0xff,0xff), M=(0xd6,0xec,0xff), L=(0x93,0xb8,0xd8), O=(0x2b,0x3d,0x4d)),
+    'dbone':   dict(H=(0xf4,0xf2,0xde), M=(0xc9,0xc3,0xa1), L=(0x8e,0x88,0x69), O=(0x2b,0x28,0x18)),
+    'quartz':  dict(H=(0xff,0xff,0xff), M=(0xe2,0xe8,0xee), L=(0xb9,0xc2,0xcc), O=(0x2a,0x2f,0x36)),
+    'bauxite': dict(H=(0xe8,0xd3,0xb0), M=(0xc0,0x9a,0x6a), L=(0x8a,0x6a,0x42), O=(0x2f,0x24,0x17)),
 }
 
 # 目标贴图 -> (原版模板, 调色板, 是否保留木柄暖色)
@@ -83,6 +87,8 @@ PLAN = [
     ('professional_upgrade_tools', 'netherite_upgrade_smithing_template', 'whitegold', False),
     ('raw_chromium',        'raw_iron',        'chrom', False),
     ('raw_magnesium',       'raw_iron',        'mag', False),
+    ('bauxite_powder',      'gunpowder',       'bauxite', False),
+    ('cryolite_powder',     'gunpowder',       'cryolite', False),
     # ⑪ 锡 / 青铜
     ('raw_tin',             'raw_iron',        'tin', False),
     ('tin_ingot',           'iron_ingot',      'tin', False),
@@ -112,10 +118,35 @@ ORE_PLAN = [
     ('deepslate_tin_ore','deepslate_iron_ore','tin'),
 ]
 
-# 护甲层: (输出名, 原版/既有模板, 调色板) —— 输出到 textures/models/armor
+# 护甲层: (输出名, 原版模板, 调色板) —— 输出到 textures/models/armor
 ARMOR_LAYER_PLAN = [
-    ('trinity_layer_1', 'titanite_layer_1', 'trinity'),
-    ('trinity_layer_2', 'titanite_layer_2', 'trinity'),
+    ('duraalumin_layer_1', 'iron_layer_1', 'duraal'),
+    ('duraalumin_layer_2', 'iron_layer_2', 'duraal'),
+    ('endite_layer_1', 'iron_layer_1', 'endite'),
+    ('endite_layer_2', 'iron_layer_2', 'endite'),
+    ('titanite_layer_1', 'iron_layer_1', 'titan'),
+    ('titanite_layer_2', 'iron_layer_2', 'titan'),
+    ('trinity_layer_1', 'iron_layer_1', 'trinity'),
+    ('trinity_layer_2', 'iron_layer_2', 'trinity'),
+]
+
+# 方块整块重绘: (输出名, 原版模板, 调色板)
+BLOCK_PLAN = [
+    ('aluminum_block',       'iron_block',     'alum'),
+    ('titanium_block',       'iron_block',     'titanium'),
+    ('titanite_block',       'gold_block',     'titan'),
+    ('chromium_block',       'iron_block',     'chrom'),
+    ('carbon_steel_block',   'iron_block',     'carbon'),
+    ('raw_magnesium_block',  'raw_iron_block', 'mag'),
+    ('cryolite',             'glowstone',      'cryolite'),
+    ('dragon_remains',       'bone_block_side','dbone'),
+]
+
+# 方块矿点重绘: (输出名, 原版矿石模板, 调色板)
+ORE_BLOCK_PLAN = [
+    ('power_stone_ore',    'iron_ore',          'energy'),
+    ('overworld_quartz_ore','iron_ore',         'quartz'),
+    ('deepslate_quartz_ore','deepslate_iron_ore','quartz'),
 ]
 
 
@@ -232,6 +263,30 @@ def recolor(src_rgba, w, h, pal, keep_wood):
     return out
 
 
+def lerp(a, b, k):
+    return (a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k)
+
+
+def recolor_ramp(src_rgba, pal, keep_wood=False):
+    """按原图亮度做连续渐变映射(暗->L, 中->M, 亮->H), 保留原版的多级明暗层次。"""
+    idxs = [i for i, c in enumerate(src_rgba) if c[3] > 40]
+    metals = [i for i in idxs if not (keep_wood and is_wood(src_rgba[i]))]
+    lums = [lum(src_rgba[i]) for i in metals]
+    if not lums:
+        return [0] * (len(src_rgba) * 4)
+    lo, hi = min(lums), max(lums)
+    out = [0] * (len(src_rgba) * 4)
+    for i in idxs:
+        c = src_rgba[i]
+        if keep_wood and is_wood(c):
+            out[i*4:i*4+4] = [c[0], c[1], c[2], 255]
+            continue
+        t = 0.0 if hi <= lo else (lum(c) - lo) / (hi - lo)
+        col = lerp(pal['L'], pal['M'], t / 0.5) if t < 0.5 else lerp(pal['M'], pal['H'], (t - 0.5) / 0.5)
+        out[i*4:i*4+4] = [int(col[0]), int(col[1]), int(col[2]), 255]
+    return out
+
+
 def recolor_ore(src_rgba, pal):
     """仅重绘暖色"矿点"像素(保留石头/深板岩底纹)。"""
     out = [0]*(len(src_rgba)*4)
@@ -254,7 +309,9 @@ def main():
     for name, template, palname, keep_wood in PLAN:
         src = f'{VANILLA}/{template}.png'
         w, h, rgba = decode(src)
-        px = recolor(rgba, w, h, PALETTES[palname], keep_wood)
+        armor_icon = any(name.endswith(sfx) for sfx in ('_helmet', '_chestplate', '_leggings', '_boots'))
+        px = (recolor_ramp(rgba, PALETTES[palname], keep_wood) if armor_icon
+              else recolor(rgba, w, h, PALETTES[palname], keep_wood))
         write_png(f'{OUT}/{name}.png', w, h, px)
         # 校验: 轮廓(alpha)必须与模板完全一致
         mism = sum(1 for i in range(w*h) if (rgba[i][3] > 40) != (px[i*4+3] > 40))
@@ -266,18 +323,19 @@ def generate_extras():
     block_dir = 'src/main/resources/assets/empire/textures/block'
     armor_dir = 'src/main/resources/assets/empire/textures/models/armor'
     _os.makedirs(block_dir, exist_ok=True)
-    for name, template, palname in ORE_PLAN:
-        src = f'{VANILLA}/{template}.png'
-        w, h, rgba = decode(src)
-        px = recolor_ore(rgba, PALETTES[palname])
-        write_png(f'{block_dir}/{name}.png', w, h, px)
+    _os.makedirs(armor_dir, exist_ok=True)
+    for name, template, palname in ORE_PLAN + ORE_BLOCK_PLAN:
+        w, h, rgba = decode(f'{VANILLA}/{template}.png')
+        write_png(f'{block_dir}/{name}.png', w, h, recolor_ore(rgba, PALETTES[palname]))
         print(f'{name:24s} <- {template} (矿点重绘)')
+    for name, template, palname in BLOCK_PLAN:
+        w, h, rgba = decode(f'{VANILLA}/{template}.png')
+        write_png(f'{block_dir}/{name}.png', w, h, recolor_ramp(rgba, PALETTES[palname]))
+        print(f'{name:24s} <- {template} (方块渐变重绘)')
     for name, template, palname in ARMOR_LAYER_PLAN:
-        src = f'{armor_dir}/{template}.png'
-        w, h, rgba = decode(src)
-        px = recolor(rgba, w, h, PALETTES[palname], False)
-        write_png(f'{armor_dir}/{name}.png', w, h, px)
-        print(f'{name:24s} <- {template} (护甲层重绘) {w}x{h}')
+        w, h, rgba = decode(f'{VANILLA}/{template}.png')
+        write_png(f'{armor_dir}/{name}.png', w, h, recolor_ramp(rgba, PALETTES[palname]))
+        print(f'{name:24s} <- {template} (护甲层渐变重绘) {w}x{h}')
 
 
 if __name__ == '__main__':
