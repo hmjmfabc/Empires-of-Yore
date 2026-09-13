@@ -28,6 +28,8 @@
     "empire:raw_magnesium_block",
     "empire:titanite_block",
     "empire:titanium_block",
-    "empire:titanium_ore"
+    "empire:titanium_ore",
+    "empire:tin_ore",
+    "empire:deepslate_tin_ore"
   ]
 }

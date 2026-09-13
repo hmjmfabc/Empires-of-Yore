@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ttp",
+    "tut",
+    "ttt"
+  ],
+  "key": {
+    "t": {
+      "item": "empire:titanite_ingot"
+    },
+    "u": {
+      "item": "empire:professional_upgrade_tools"
+    },
+    "p": {
+      "item": "empire:cryolite_powder"
+    }
+  },
+  "result": {
+    "id": "empire:ultimate_upgrade_tool",
+    "count": 2
+  }
+}

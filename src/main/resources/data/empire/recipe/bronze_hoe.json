@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bb ",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "b": {
+      "item": "empire:bronze_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "empire:bronze_hoe",
+    "count": 1
+  }
+}

@@ -26,6 +26,10 @@ PALETTES = {
     'endscrap':dict(H=(0xd9,0xc0,0xff), M=(0x8b,0x5c,0xd6), L=(0x57,0x30,0x9c), O=(0x1d,0x10,0x33)),
     'copper':  dict(H=(0xf0,0xc4,0x8a), M=(0xc0,0x7f,0x3c), L=(0x7d,0x4c,0x1c), O=(0x2a,0x17,0x07)),
     'whitegold':dict(H=(0xff,0xf2,0xc4), M=(0xe0,0xbd,0x5f), L=(0x9c,0x7c,0x2c), O=(0x33,0x28,0x0c)),
+    'tin':     dict(H=(0xf2,0xf5,0xf8), M=(0xc8,0xcf,0xd6), L=(0x93,0x9b,0xa3), O=(0x2d,0x32,0x38)),
+    'bronze':  dict(H=(0xf0,0xc9,0x8a), M=(0xc0,0x84,0x3c), L=(0x7d,0x4e,0x1f), O=(0x2a,0x18,0x08)),
+    'trinity': dict(H=(0xf5,0xdf,0xa6), M=(0xa0,0x6f,0xd8), L=(0x4b,0x2c,0x7a), O=(0x14,0x0a,0x24)),
+    'epic':    dict(H=(0xff,0xf2,0xc8), M=(0xe0,0xb6,0x4f), L=(0x8a,0x5f,0x1c), O=(0x2a,0x1a,0x05)),
 }
 
 # 目标贴图 -> (原版模板, 调色板, 是否保留木柄暖色)
@@ -79,6 +83,39 @@ PLAN = [
     ('professional_upgrade_tools', 'netherite_upgrade_smithing_template', 'whitegold', False),
     ('raw_chromium',        'raw_iron',        'chrom', False),
     ('raw_magnesium',       'raw_iron',        'mag', False),
+    # ⑪ 锡 / 青铜
+    ('raw_tin',             'raw_iron',        'tin', False),
+    ('tin_ingot',           'iron_ingot',      'tin', False),
+    ('bronze_ingot',        'iron_ingot',      'bronze', False),
+    ('bronze_pickaxe',      'iron_pickaxe',    'bronze', True),
+    ('bronze_axe',          'iron_axe',        'bronze', True),
+    ('bronze_shovel',       'iron_shovel',     'bronze', True),
+    ('bronze_hoe',          'iron_hoe',        'bronze', True),
+    ('bronze_sword',        'iron_sword',      'bronze', True),
+    # ⑰ 三界钛合金
+    ('trinity_titanite_ingot',      'iron_ingot',    'trinity', False),
+    ('ultimate_upgrade_tool',       'netherite_upgrade_smithing_template', 'epic', False),
+    ('trinity_titanite_pickaxe',    'iron_pickaxe',  'trinity', True),
+    ('trinity_titanite_axe',        'iron_axe',      'trinity', True),
+    ('trinity_titanite_shovel',     'iron_shovel',   'trinity', True),
+    ('trinity_titanite_hoe',        'iron_hoe',      'trinity', True),
+    ('trinity_titanite_sword',      'iron_sword',    'trinity', True),
+    ('trinity_titanite_helmet',     'iron_helmet',   'trinity', False),
+    ('trinity_titanite_chestplate', 'iron_chestplate','trinity', False),
+    ('trinity_titanite_leggings',   'iron_leggings', 'trinity', False),
+    ('trinity_titanite_boots',      'iron_boots',    'trinity', False),
+]
+
+# 矿石方块: (输出名, 原版模板, 调色板) —— 仅把"矿点(暖色像素)"改为金属色, 石头底纹保留
+ORE_PLAN = [
+    ('tin_ore',          'iron_ore',          'tin'),
+    ('deepslate_tin_ore','deepslate_iron_ore','tin'),
+]
+
+# 护甲层: (输出名, 原版/既有模板, 调色板) —— 输出到 textures/models/armor
+ARMOR_LAYER_PLAN = [
+    ('trinity_layer_1', 'titanite_layer_1', 'trinity'),
+    ('trinity_layer_2', 'titanite_layer_2', 'trinity'),
 ]
 
 
@@ -195,6 +232,23 @@ def recolor(src_rgba, w, h, pal, keep_wood):
     return out
 
 
+def recolor_ore(src_rgba, pal):
+    """仅重绘暖色"矿点"像素(保留石头/深板岩底纹)。"""
+    out = [0]*(len(src_rgba)*4)
+    for i, c in enumerate(src_rgba):
+        r, g, b, a = c
+        out[i*4:i*4+4] = [r, g, b, a]
+        if a < 40:
+            continue
+        warm = r > g >= b and (r - b) > 18
+        if not warm:
+            continue
+        lum = 0.299*r + 0.587*g + 0.114*b
+        tone = pal['H'] if lum > 170 else (pal['M'] if lum > 95 else pal['L'])
+        out[i*4:i*4+4] = [tone[0], tone[1], tone[2], 255]
+    return out
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     for name, template, palname, keep_wood in PLAN:
@@ -207,5 +261,25 @@ def main():
         print(f'{name:28s} <- {template:36s} {palname:9s} alpha-mismatch={mism}')
 
 
+def generate_extras():
+    import os as _os
+    block_dir = 'src/main/resources/assets/empire/textures/block'
+    armor_dir = 'src/main/resources/assets/empire/textures/models/armor'
+    _os.makedirs(block_dir, exist_ok=True)
+    for name, template, palname in ORE_PLAN:
+        src = f'{VANILLA}/{template}.png'
+        w, h, rgba = decode(src)
+        px = recolor_ore(rgba, PALETTES[palname])
+        write_png(f'{block_dir}/{name}.png', w, h, px)
+        print(f'{name:24s} <- {template} (矿点重绘)')
+    for name, template, palname in ARMOR_LAYER_PLAN:
+        src = f'{armor_dir}/{template}.png'
+        w, h, rgba = decode(src)
+        px = recolor(rgba, w, h, PALETTES[palname], False)
+        write_png(f'{armor_dir}/{name}.png', w, h, px)
+        print(f'{name:24s} <- {template} (护甲层重绘) {w}x{h}')
+
+
 if __name__ == '__main__':
     main()
+    generate_extras()

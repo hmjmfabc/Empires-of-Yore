@@ -99,6 +99,12 @@ public final class EmpiresOfYoreMod {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static final DeferredRegister<net.minecraft.world.effect.MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MODID);
+    public static final DeferredRegister<net.minecraft.world.item.alchemy.Potion> POTIONS = DeferredRegister.create(Registries.POTION, MODID);
+    public static final DeferredRegister<com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.loot.IGlobalLootModifier>> LOOT_MODIFIERS =
+            DeferredRegister.create(net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MODID);
+    public static final DeferredHolder<com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.loot.IGlobalLootModifier>, com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.loot.IGlobalLootModifier>> CHEST_POTIONS =
+            LOOT_MODIFIERS.register("chest_potions", () -> top.swordsman.empire.loot.ChestPotionLootModifier.CODEC);
 
     private static Item.Properties base() { return new Item.Properties(); }
     private static BlockBehaviour.Properties blockProps(MapColor c) {
@@ -150,6 +156,17 @@ public final class EmpiresOfYoreMod {
     public static final DeferredItem<BlockItem> OVERWORLD_QUARTZ_ORE_ITEM = ITEMS.registerSimpleBlockItem("overworld_quartz_ore", OVERWORLD_QUARTZ_ORE);
     public static final DeferredBlock<Block> DEEPSLATE_QUARTZ_ORE = BLOCKS.register("deepslate_quartz_ore", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
     public static final DeferredItem<BlockItem> DEEPSLATE_QUARTZ_ORE_ITEM = ITEMS.registerSimpleBlockItem("deepslate_quartz_ore", DEEPSLATE_QUARTZ_ORE);
+
+    /* ====== ⑪ 锡矿石 ====== */
+    public static final DeferredBlock<Block> TIN_ORE = BLOCKS.register("tin_ore",
+            () -> new net.minecraft.world.level.block.DropExperienceBlock(net.minecraft.util.valueproviders.UniformInt.of(0, 2),
+                    blockProps(MapColor.STONE).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> DEEPSLATE_TIN_ORE = BLOCKS.register("deepslate_tin_ore",
+            () -> new net.minecraft.world.level.block.DropExperienceBlock(net.minecraft.util.valueproviders.UniformInt.of(0, 2),
+                    BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).strength(4.5f, 3.0f)
+                            .sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
+    public static final DeferredItem<BlockItem> TIN_ORE_ITEM = ITEMS.registerSimpleBlockItem("tin_ore", TIN_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_TIN_ORE_ITEM = ITEMS.registerSimpleBlockItem("deepslate_tin_ore", DEEPSLATE_TIN_ORE);
 
     /* ====== 金属块 ====== */
     public static final DeferredBlock<Block> ALUMINUM_BLOCK = BLOCKS.register("aluminum_block", () -> new Block(blockProps(MapColor.SNOW)));
@@ -330,6 +347,104 @@ public final class EmpiresOfYoreMod {
     public static final DeferredItem<MikuItem.Leggings> MIKU_LEGGINGS = ITEMS.register("miku_leggings", MikuItem.Leggings::new);
     public static final DeferredItem<MikuItem.Boots> MIKU_BOOTS = ITEMS.register("miku_boots", MikuItem.Boots::new);
 
+    /* ====== ⑪ 青铜体系：高性能低耐久(比金更极端) ====== */
+    public static final DeferredItem<Item> RAW_TIN = ITEMS.register("raw_tin", () -> new Item(base()));
+    public static final DeferredItem<Item> TIN_INGOT = ITEMS.register("tin_ingot", () -> new Item(base()));
+    public static final DeferredItem<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", () -> new Item(base().rarity(Rarity.UNCOMMON)));
+
+    /** 青铜材质: 挖掘等级 2(同铁), 速度 18 = 金镐(12)的 1.5 倍; 耐久按件独立(TieredItem 会用 tier 耐久覆盖属性)。 */
+    public static final Tier BRONZE_PICKAXE_TIER = new top.swordsman.empire.item.EmpireTier(79, 18.0f, 0f, 22, BlockTags.INCORRECT_FOR_IRON_TOOL, () -> BRONZE_INGOT.get());
+    public static final Tier BRONZE_SWORD_TIER = new top.swordsman.empire.item.EmpireTier(59, 12.0f, 0f, 22, BlockTags.INCORRECT_FOR_IRON_TOOL, () -> BRONZE_INGOT.get());
+    public static final Tier BRONZE_AXE_TIER = new top.swordsman.empire.item.EmpireTier(59, 12.0f, 0f, 22, BlockTags.INCORRECT_FOR_IRON_TOOL, () -> BRONZE_INGOT.get());
+    public static final Tier BRONZE_SHOVEL_TIER = new top.swordsman.empire.item.EmpireTier(64, 18.0f, 0f, 22, BlockTags.INCORRECT_FOR_IRON_TOOL, () -> BRONZE_INGOT.get());
+    public static final Tier BRONZE_HOE_TIER = new top.swordsman.empire.item.EmpireTier(159, 12.0f, 0f, 22, BlockTags.INCORRECT_FOR_IRON_TOOL, () -> BRONZE_INGOT.get());
+
+    public static final DeferredItem<Item> BRONZE_PICKAXE = ITEMS.register("bronze_pickaxe",
+            () -> new PickaxeItem(BRONZE_PICKAXE_TIER, base().attributes(DiggerItem.createAttributes(BRONZE_PICKAXE_TIER, 2f, -2.8f))));
+    /** 总伤害 7(1+6), 攻速与钻石剑一致(-2.4)。 */
+    public static final DeferredItem<Item> BRONZE_SWORD = ITEMS.register("bronze_sword",
+            () -> new SwordItem(BRONZE_SWORD_TIER, base().attributes(SwordItem.createAttributes(BRONZE_SWORD_TIER, 6f, -2.4f))));
+    /** 总伤害 12(1+11), 砍伐速度与金斧一致(12)。 */
+    public static final DeferredItem<Item> BRONZE_AXE = ITEMS.register("bronze_axe",
+            () -> new AxeItem(BRONZE_AXE_TIER, base().attributes(DiggerItem.createAttributes(BRONZE_AXE_TIER, 11f, -3.0f))));
+    /** 速度 18 ≥ 15: 泥土(硬度0.5)可无附魔瞬间挖掘。 */
+    public static final DeferredItem<Item> BRONZE_SHOVEL = ITEMS.register("bronze_shovel",
+            () -> new ShovelItem(BRONZE_SHOVEL_TIER, base().attributes(DiggerItem.createAttributes(BRONZE_SHOVEL_TIER, 1.5f, -3.0f))));
+    public static final DeferredItem<Item> BRONZE_HOE = ITEMS.register("bronze_hoe",
+            () -> new HoeItem(BRONZE_HOE_TIER, base().attributes(DiggerItem.createAttributes(BRONZE_HOE_TIER, 0f, -3.0f))));
+
+    /* ====== ⑰ 三界钛合金 ====== */
+    public static final DeferredItem<Item> TRINITY_INGOT = ITEMS.register("trinity_titanite_ingot",
+            () -> new Item(base().rarity(Rarity.EPIC).fireResistant()));
+    public static final DeferredItem<Item> ULTIMATE_UPGRADE_TOOL = ITEMS.register("ultimate_upgrade_tool",
+            () -> new Item(base().rarity(Rarity.EPIC)));
+
+    public static final TagKey<Block> INCORRECT_FOR_TRINITY_TOOL =
+            TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MODID, "incorrect_for_trinity_tool"));
+    /** 三界钛合金材质: 钛合金 ×1.1(耐久 3939→4333, 速度 24→26.4, 伤害加成 5→5.5), 挖掘等级 8。 */
+    public static final Tier TRINITY_TIER = new top.swordsman.empire.item.EmpireTier(4333, 26.4f, 5.5f, 34, INCORRECT_FOR_TRINITY_TOOL, () -> TRINITY_INGOT.get());
+
+    public static final DeferredItem<Item> TRINITY_PICKAXE = ITEMS.register("trinity_titanite_pickaxe",
+            () -> new PickaxeItem(TRINITY_TIER, base().attributes(DiggerItem.createAttributes(TRINITY_TIER, 7.7f, -3.0f)).fireResistant()));
+    public static final DeferredItem<Item> TRINITY_SWORD = ITEMS.register("trinity_titanite_sword",
+            () -> new SwordItem(TRINITY_TIER, base().attributes(SwordItem.createAttributes(TRINITY_TIER, 13.2f, 1.1f)).fireResistant()));
+    public static final DeferredItem<Item> TRINITY_AXE = ITEMS.register("trinity_titanite_axe",
+            () -> new AxeItem(TRINITY_TIER, base().attributes(DiggerItem.createAttributes(TRINITY_TIER, 9.9f, -2.6f)).fireResistant()));
+    public static final DeferredItem<Item> TRINITY_SHOVEL = ITEMS.register("trinity_titanite_shovel",
+            () -> new ShovelItem(TRINITY_TIER, base().attributes(DiggerItem.createAttributes(TRINITY_TIER, 5.5f, -2.6f)).fireResistant()));
+    public static final DeferredItem<Item> TRINITY_HOE = ITEMS.register("trinity_titanite_hoe",
+            () -> new HoeItem(TRINITY_TIER, base().attributes(DiggerItem.createAttributes(TRINITY_TIER, 3.3f, -3.3f)).fireResistant()));
+    public static final DeferredItem<Item> TRINITY_HELMET = ITEMS.register("trinity_titanite_helmet", top.swordsman.empire.item.TrinityArmorItem.Helmet::new);
+    public static final DeferredItem<Item> TRINITY_CHESTPLATE = ITEMS.register("trinity_titanite_chestplate", top.swordsman.empire.item.TrinityArmorItem.Chestplate::new);
+    public static final DeferredItem<Item> TRINITY_LEGGINGS = ITEMS.register("trinity_titanite_leggings", top.swordsman.empire.item.TrinityArmorItem.Leggings::new);
+    public static final DeferredItem<Item> TRINITY_BOOTS = ITEMS.register("trinity_titanite_boots", top.swordsman.empire.item.TrinityArmorItem.Boots::new);
+
+    /* ====== ⑭⑯ 状态效果 ====== */
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> ANGER =
+            MOB_EFFECTS.register("anger", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.NEUTRAL, 0xB03A2E));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> CALM =
+            MOB_EFFECTS.register("calm", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.BENEFICIAL, 0x9FD8E8));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> DIVINITY =
+            MOB_EFFECTS.register("divinity", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.BENEFICIAL, 0xFFD700));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> INCORPOREAL =
+            MOB_EFFECTS.register("incorporeal", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.BENEFICIAL, 0xD8D8F0));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> UNDEAD_FORM =
+            MOB_EFFECTS.register("undead_form", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.NEUTRAL, 0x4B5D3A));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> ENDER_FORM =
+            MOB_EFFECTS.register("ender_form", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.NEUTRAL, 0x6B2FA0));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> ARTIFACT =
+            MOB_EFFECTS.register("artifact", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.BENEFICIAL, 0x39D0C8));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> CUT_RATIONS =
+            MOB_EFFECTS.register("cut_rations", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.HARMFUL, 0x8B5A2B));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> INDULGENCE =
+            MOB_EFFECTS.register("indulgence", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.HARMFUL, 0xE58FB0));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> LIGHTNING =
+            MOB_EFFECTS.register("lightning", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.NEUTRAL, 0xFFF35C));
+    public static final DeferredHolder<net.minecraft.world.effect.MobEffect, net.minecraft.world.effect.MobEffect> FALLEN =
+            MOB_EFFECTS.register("fallen", () -> new top.swordsman.empire.effect.EmpireEffect(net.minecraft.world.effect.MobEffectCategory.HARMFUL, 0x8FD3FF));
+
+    /* ====== ⑯ 药水(暂无合成方式, 由宝箱小概率产出) ====== */
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_ANGER =
+            POTIONS.register("anger", () -> new net.minecraft.world.item.alchemy.Potion("anger", new net.minecraft.world.effect.MobEffectInstance(ANGER, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_CALM =
+            POTIONS.register("calm", () -> new net.minecraft.world.item.alchemy.Potion("calm", new net.minecraft.world.effect.MobEffectInstance(CALM, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_DIVINITY =
+            POTIONS.register("divinity", () -> new net.minecraft.world.item.alchemy.Potion("divinity", new net.minecraft.world.effect.MobEffectInstance(DIVINITY, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_INCORPOREAL =
+            POTIONS.register("incorporeal", () -> new net.minecraft.world.item.alchemy.Potion("incorporeal", new net.minecraft.world.effect.MobEffectInstance(INCORPOREAL, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_UNDEAD_FORM =
+            POTIONS.register("undead_form", () -> new net.minecraft.world.item.alchemy.Potion("undead_form", new net.minecraft.world.effect.MobEffectInstance(UNDEAD_FORM, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_ENDER_FORM =
+            POTIONS.register("ender_form", () -> new net.minecraft.world.item.alchemy.Potion("ender_form", new net.minecraft.world.effect.MobEffectInstance(ENDER_FORM, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_ARTIFACT =
+            POTIONS.register("artifact", () -> new net.minecraft.world.item.alchemy.Potion("artifact", new net.minecraft.world.effect.MobEffectInstance(ARTIFACT, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_CUT_RATIONS =
+            POTIONS.register("cut_rations", () -> new net.minecraft.world.item.alchemy.Potion("cut_rations", new net.minecraft.world.effect.MobEffectInstance(CUT_RATIONS, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_INDULGENCE =
+            POTIONS.register("indulgence", () -> new net.minecraft.world.item.alchemy.Potion("indulgence", new net.minecraft.world.effect.MobEffectInstance(INDULGENCE, 3600, 0)));
+    public static final DeferredHolder<net.minecraft.world.item.alchemy.Potion, net.minecraft.world.item.alchemy.Potion> POTION_LIGHTNING =
+            POTIONS.register("lightning", () -> new net.minecraft.world.item.alchemy.Potion("lightning", new net.minecraft.world.effect.MobEffectInstance(LIGHTNING, 3600, 0)));
+
     /* ====== 方块物品(矿石/金属块/机器) ====== */
     public static final DeferredBlock<Block> POWER_STONE_ORE = BLOCKS.register("power_stone_ore", top.swordsman.empire.block.PowerStoneOreBlock::new);
     public static final DeferredItem<BlockItem> POWER_STONE_ORE_ITEM = ITEMS.registerSimpleBlockItem("power_stone_ore", POWER_STONE_ORE);
@@ -347,11 +462,15 @@ public final class EmpiresOfYoreMod {
         ITEMS.register(modEventBus);
         FEATURES.register(modEventBus);
         BLOCK_ENTITIES.register(modEventBus);
+        MOB_EFFECTS.register(modEventBus);
+        POTIONS.register(modEventBus);
+        LOOT_MODIFIERS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(EmpiresOfYoreMod::addCreative);
         modEventBus.addListener(EmpiresOfYoreMod::registerArmorMaterials);
         modEventBus.addListener(TitaniteItem::registerArmorMaterial);
         modEventBus.addListener(MikuItem::registerArmorMaterial);
+        modEventBus.addListener(top.swordsman.empire.item.TrinityArmorItem::registerArmorMaterial);
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.addListener(EmpireFuels::furnaceFuelBurnTimeEvent);
         NeoForge.EVENT_BUS.addListener(EmpireTrades::registerTrades);
@@ -363,26 +482,31 @@ public final class EmpiresOfYoreMod {
             for (Item i : new Item[]{POWER_STONE.get(), ADVANCED_ENERGY_STONE.get(), CRYSTAL_CURRENCY.get(), COKE.get(),
                     RAW_CHROMIUM.get(), RAW_MAGNESIUM.get(), RAW_TITAMIUM.get(), CRYOLITE_POWDER.get(), BAUXITE_POWDER.get(),
                     ALUMINUM_INGOT.get(), MAGNESIUM_INGOT.get(), CHROMIUM_INGOT.get(), TITANIUM_INGOT.get(), CARBON_STEEL_INGOT.get(),
-                    DURAALUMIN_INGOT.get(), ENDITE_INGOT.get(), TITANITE_INGOT.get(), ENDITE_SCRAP.get(), UPGRADE_TOOL.get(), PROFESSIONAL_UPGRADE_TOOLS.get()})
+                    DURAALUMIN_INGOT.get(), ENDITE_INGOT.get(), TITANITE_INGOT.get(), ENDITE_SCRAP.get(), UPGRADE_TOOL.get(), PROFESSIONAL_UPGRADE_TOOLS.get(),
+                    RAW_TIN.get(), TIN_INGOT.get(), BRONZE_INGOT.get(), TRINITY_INGOT.get(), ULTIMATE_UPGRADE_TOOL.get()})
                 event.accept(i);
         } else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             for (Block b : new Block[]{BAUXITE_ORE.get(), DEEPSLATE_BAUXITE_ORE.get(), CHROMIUM_ORE.get(), DEEPSLATE_CHROMIUM_ORE.get(),
                     MAGNESIUM_ORE.get(), DEEPSLATE_MAGNESIUM_ORE.get(), ADVANCED_ENERGY_ORE.get(), DEEPSLATE_ADVANCED_ENERGY_ORE.get(),
                     NETHER_ADVANCED_ENERGY_ORE.get(), END_ADVANCED_ENERGY_ORE.get(), CRYOLITE.get(), POWER_STONE_ORE.get(),
-                    TITANIUM_ORE.get()})
+                    TITANIUM_ORE.get(), TIN_ORE.get(), DEEPSLATE_TIN_ORE.get()})
                 event.accept(b.asItem());
         } else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             for (Item i : new Item[]{TITANITE_PICKAXE.get(), TITANITE_AXE.get(), TITANITE_SHOVEL.get(), TITANITE_HOE.get(),
                     DURAALUMIN_PICKAXE.get(), DURAALUMIN_AXE.get(), DURAALUMIN_SHOVEL.get(), DURAALUMIN_HOE.get(),
                     ENDITE_PICKAXE.get(), ENDITE_AXE.get(), ENDITE_SHOVEL.get(), ENDITE_HOE.get(),
-                    CARBON_STEEL_PICKAXE.get(), CARBON_STEEL_AXE.get(), CARBON_STEEL_SHOVEL.get(), CARBON_STEEL_HOE.get()})
+                    CARBON_STEEL_PICKAXE.get(), CARBON_STEEL_AXE.get(), CARBON_STEEL_SHOVEL.get(), CARBON_STEEL_HOE.get(),
+                    BRONZE_PICKAXE.get(), BRONZE_AXE.get(), BRONZE_SHOVEL.get(), BRONZE_HOE.get(),
+                    TRINITY_PICKAXE.get(), TRINITY_AXE.get(), TRINITY_SHOVEL.get(), TRINITY_HOE.get()})
                 event.accept(i);
         } else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             for (Item i : new Item[]{TITANITE_SWORD.get(), DURAALUMIN_SWORD.get(), ENDITE_SWORD.get(), CARBON_STEEL_SWORD.get(),
                     TITANITE_HELMET.get(), TITANITE_CHESTPLATE.get(), TITANITE_LEGGINGS.get(), TITANITE_BOOTS.get(),
                     DURAALUMIN_HELMET.get(), DURAALUMIN_CHESTPLATE.get(), DURAALUMIN_LEGGINGS.get(), DURAALUMIN_BOOTS.get(),
                     ENDITE_HELMET.get(), ENDITE_CHESTPLATE.get(), ENDITE_LEGGINGS.get(), ENDITE_BOOTS.get(),
-                    MIKU_HELMET.get(), MIKU_CHESTPLATE.get(), MIKU_LEGGINGS.get(), MIKU_BOOTS.get()})
+                    MIKU_HELMET.get(), MIKU_CHESTPLATE.get(), MIKU_LEGGINGS.get(), MIKU_BOOTS.get(),
+                    BRONZE_SWORD.get(), TRINITY_SWORD.get(), TRINITY_HELMET.get(), TRINITY_CHESTPLATE.get(),
+                    TRINITY_LEGGINGS.get(), TRINITY_BOOTS.get()})
                 event.accept(i);
         } else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             for (Block b : new Block[]{ALUMINUM_BLOCK.get(), TITANIUM_BLOCK.get(), TITANITE_BLOCK.get(), CHROMIUM_BLOCK.get(),

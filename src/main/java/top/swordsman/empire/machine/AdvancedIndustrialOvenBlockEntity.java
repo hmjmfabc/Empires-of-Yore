@@ -30,6 +30,16 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
          "empire:carbon_steel_ingot", 4800, 480f},
         {new Object[][]{{0, "empire:raw_titamium", 1}},
          "empire:titanium_ingot", 7200, 360f},
+        // ⑫ 工业熔炉及以上: 2 远古残骸 + 3 焦炭 → 3 下界合金碎片(3 分钟)
+        {new Object[][]{{0, "minecraft:ancient_debris", 2}, {1, "empire:coke", 3}},
+         "minecraft:netherite_scrap", 3, 3600, 180f},
+        // ⑫ 3 龙骸 + 8 焦炭 → 4 末影合金碎片(6 分钟)
+        {new Object[][]{{0, "empire:dragon_remains", 3}, {1, "empire:coke", 8}},
+         "empire:endite_scrap", 4, 7200, 360f},
+        // ⑰ 三界钛合金锭: 钛合金锭/下界合金锭/末影合金锭/焦炭 = 4:4:4:9, 10 分钟, 600 EXP
+        {new Object[][]{{0, "empire:titanite_ingot", 4}, {1, "minecraft:netherite_ingot", 4},
+                        {2, "empire:endite_ingot", 4}, {3, "empire:coke", 9}},
+         "empire:trinity_titanite_ingot", 1, 12000, 600f},
     };
 
     private int batchProgress = 0;
@@ -81,6 +91,7 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
                 batchProgress++;
                 if (batchProgress >= (Integer) batch[2]) {
                     ItemStack result = byId((String) batch[1]);
+                    result.setCount((Integer) batch[2]);
                     if (!fitsOutput(result)) {            // 修复: 输出槽类型/容量校验, 避免吞产物或错误堆叠
                         batchProgress = (Integer) batch[2] - 1;
                         syncData();
@@ -91,7 +102,7 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
                     }
                     ItemStack out = getItem(outputStart);
                     if (out.isEmpty()) setItem(outputStart, result);
-                    else out.grow(1);
+                    else out.grow(result.getCount());
                     if (level instanceof ServerLevel sl && (Float) batch[3] > 0) {
                         net.minecraft.world.entity.ExperienceOrb.award(sl, new net.minecraft.world.phys.Vec3(worldPosition.getX() + 0.5, worldPosition.getY() + 1.0, worldPosition.getZ() + 0.5), (int) (float) (Float) batch[3]);
                     }
@@ -135,7 +146,7 @@ public class AdvancedIndustrialOvenBlockEntity extends AbstractMachineBlockEntit
     /** 输出槽是否可以容纳该产物(空槽或同物品且不超堆叠上限) */
     private boolean fitsOutput(ItemStack result) {
         ItemStack out = getItem(outputStart);
-        return out.isEmpty() || (out.is(result.getItem()) && out.getCount() + 1 <= out.getMaxStackSize());
+        return out.isEmpty() || (out.is(result.getItem()) && out.getCount() + result.getCount() <= out.getMaxStackSize());
     }
 
     private boolean hasRoomFor(SmeltResult r) {

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "category": "misc",
+  "template": {
+    "item": "empire:ultimate_upgrade_tool"
+  },
+  "base": {
+    "item": "empire:titanite_chestplate"
+  },
+  "addition": {
+    "item": "empire:trinity_titanite_ingot"
+  },
+  "result": {
+    "id": "empire:trinity_titanite_chestplate"
+  }
+}
