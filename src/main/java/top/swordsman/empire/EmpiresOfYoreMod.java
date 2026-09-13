@@ -203,8 +203,6 @@ public final class EmpiresOfYoreMod {
     public static final DeferredItem<CrystalCurrencyItem> CRYSTAL_CURRENCY = ITEMS.register("crystal_currency", CrystalCurrencyItem::new);
     public static final DeferredItem<UpgradeToolItem> UPGRADE_TOOL = ITEMS.register("upgrade_tool", UpgradeToolItem::new);
     public static final DeferredItem<Item> TITANITE_INGOT = ITEMS.register("titanite_ingot", () -> new Item(base().rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> TITANITE_STICK = ITEMS.register("titanite_stick", () -> new Item(base().rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> TITANITE_SCRAP = ITEMS.register("titanite_scrap", () -> new Item(base().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> TITANITE_PICKAXE = ITEMS.register("titanite_pickaxe", TitanitePickaxeItem::new);
     public static final DeferredItem<Item> TITANITE_SWORD = ITEMS.register("titanite_sword", TitaniteSwordItem::new);
     public static final DeferredItem<Item> TITANITE_HOE = ITEMS.register("titanite_hoe", TitaniteHoeItem::new);

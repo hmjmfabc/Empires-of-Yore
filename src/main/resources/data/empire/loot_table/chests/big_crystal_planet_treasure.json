@@ -13,7 +13,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "empire:titanite_stick",
+          "name": "empire:titanite_ingot",
           "weight": 5,
           "functions": [
             {
